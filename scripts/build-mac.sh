@@ -51,4 +51,4 @@ echo "  $AU_DIR/JG Mastering EQ.component"
 echo "  $VST3_DIR/JG Mastering EQ.vst3"
 echo "Standalone app: $ART/Standalone/JG Mastering EQ.app"
 echo "Restart your DAW (Logic: look under Audio Units > JG Designs)."
-open "$ART/Standalone" || true
+[ -z "${JGEQ_NO_OPEN:-}" ] && open "$ART/Standalone" || true

@@ -52,8 +52,11 @@ jobs:
       - name: Build
         run: cmake --build build --parallel
 
-      - name: Unit tests (null test, state, layouts)
+      - name: Audio tests (null, parameters, recall, clicks, response, level)
         run: ctest --test-dir build --output-on-failure
+
+      - name: CPU benchmark
+        run: ./build/tests/JGMasteringEQBench 10
 
       - name: pluginval (VST3, strictness 10, no GUI)
         run: |
@@ -82,7 +85,7 @@ jobs:
       - name: Build
         run: cmake --build build --parallel
 
-      - name: Unit tests (null test, state, layouts)
+      - name: Audio tests (null, parameters, recall, clicks, response, level)
         run: ctest --test-dir build --output-on-failure
 
       - name: Ad-hoc sign the bundles (not notarised; see docs/INSTALL-mac.md)
@@ -128,6 +131,9 @@ jobs:
           PV=pluginval.app/Contents/MacOS/pluginval
           $PV --strictness-level 10 --validate-in-process "build/JGMasteringEQ_artefacts/Release/VST3/JG Mastering EQ.vst3"
           $PV --strictness-level 10 --validate-in-process ~/Library/Audio/Plug-Ins/Components/"JG Mastering EQ.component"
+
+      - name: CPU benchmark
+        run: ./build/tests/JGMasteringEQBench 10
 
       - name: Package download
         run: |

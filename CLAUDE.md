@@ -23,8 +23,10 @@ draft parameter list and ID rules, testing plan and roadmap. Follow its
 - `ui/` the web interface (ported from design board C13), compiled into the plugin.
   `index.html` holds the template, `app.js` the logic. Open `ui/index.html` in a
   browser to work on it with fake data. Keep these files ASCII (CI checks).
-- `tests/` Catch2 tests (null test, state round trip, layouts). Every DSP change
-  ships with a test.
+- `tests/` Catch2 audio tests + toolkit (`TestHelpers.h`: offline render, response,
+  THD/aliasing, clicks, goldens in `tests/golden/`) and a CPU benchmark. Every DSP
+  change ships with a test. See `docs/TESTING.md`. `tests/parameter_ids.txt` locks IDs.
+- `scripts/build-mac.sh` builds+installs on a Mac; `scripts/test-mac.sh` runs every check.
 - `design/reference/` C13 reference board and notes on how the prototype differs.
 - `.github/workflows/build.yml` CI: Linux build+tests on every push; macOS
   VST3/AU build with auval, Steinberg validator and pluginval (strictness 10) on
