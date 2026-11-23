@@ -65,7 +65,7 @@ jobs:
   macos:
     name: macOS (VST3 + AU, validated)
     if: github.event_name != 'push' || github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v')
-    runs-on: macos-15
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
 
@@ -97,7 +97,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: vst3-validator
-          key: vst3-validator-${{ env.VST3SDK_TAG }}-macos15
+          key: vst3-validator-${{ env.VST3SDK_TAG }}-macos-latest
 
       - name: Build VST3 validator
         if: steps.vst3cache.outputs.cache-hit != 'true'
