@@ -1,0 +1,157 @@
+name: Build and validate
+
+# macOS minutes count 10x against GitHub's free allowance on private repos,
+# so the full Mac build runs on pushes to main, pull requests, version tags
+# and on demand (Actions tab > "Build and validate" > Run workflow).
+# The quick Linux check (build + tests) runs on every push.
+on:
+  push:
+    branches: ['**']
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write   # lets version tags publish a release
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PLUGINVAL_VERSION: v1.0.4
+  VST3SDK_TAG: v3.8.1_build_84
+
+jobs:
+  linux-check:
+    name: Linux (build + tests)
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ninja-build libasound2-dev libfreetype-dev libfontconfig1-dev \
+            libx11-dev libxcomposite-dev libxcursor-dev libxext-dev libxinerama-dev libxrandr-dev \
+            libxrender-dev libxi-dev libgl1-mesa-dev libgtk-3-dev libwebkit2gtk-4.1-dev
+
+      - name: Interface files must be plain ASCII
+        run: |
+          if LC_ALL=C grep -nP '[^\x00-\x7F]' ui/index.html ui/app.js; then
+            echo "Non-ASCII characters found: use HTML entities / \\u escapes instead."; exit 1
+          fi
+
+      - uses: hendrikmuhs/ccache-action@v1.2
+        with:
+          key: linux
+
+      - name: Configure
+        run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache
+
+      - name: Build
+        run: cmake --build build --parallel
+
+      - name: Unit tests (null test, state, layouts)
+        run: ctest --test-dir build --output-on-failure
+
+      - name: pluginval (VST3, strictness 10, no GUI)
+        run: |
+          curl -sL -o pv.zip "https://github.com/Tracktion/pluginval/releases/download/${PLUGINVAL_VERSION}/pluginval_Linux.zip"
+          unzip -q pv.zip
+          ./pluginval --strictness-level 10 --skip-gui-tests --validate-in-process \
+            "build/JGMasteringEQ_artefacts/Release/VST3/JG Mastering EQ.vst3"
+
+  macos:
+    name: macOS (VST3 + AU, validated)
+    if: github.event_name != 'push' || github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v')
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Ninja
+        run: brew list ninja >/dev/null 2>&1 || brew install ninja
+
+      - uses: hendrikmuhs/ccache-action@v1.2
+        with:
+          key: macos
+
+      - name: Configure
+        run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache
+
+      - name: Build
+        run: cmake --build build --parallel
+
+      - name: Unit tests (null test, state, layouts)
+        run: ctest --test-dir build --output-on-failure
+
+      - name: Ad-hoc sign the bundles (not notarised; see docs/INSTALL-mac.md)
+        run: |
+          A="build/JGMasteringEQ_artefacts/Release"
+          codesign --force --deep --sign - "$A/VST3/JG Mastering EQ.vst3"
+          codesign --force --deep --sign - "$A/AU/JG Mastering EQ.component"
+          codesign --force --deep --sign - "$A/Standalone/JG Mastering EQ.app"
+
+      - name: Steinberg VST3 validator (cached)
+        id: vst3cache
+        uses: actions/cache@v4
+        with:
+          path: vst3-validator
+          key: vst3-validator-${{ env.VST3SDK_TAG }}-macos15
+
+      - name: Build VST3 validator
+        if: steps.vst3cache.outputs.cache-hit != 'true'
+        run: |
+          git clone --depth 1 --branch "$VST3SDK_TAG" --recursive --shallow-submodules https://github.com/steinbergmedia/vst3sdk.git sdk
+          cmake -S sdk -B sdk-build -G Ninja -DCMAKE_BUILD_TYPE=Release \
+            -DSMTG_ENABLE_VST3_PLUGIN_EXAMPLES=OFF -DSMTG_ENABLE_VST3_HOSTING_EXAMPLES=OFF \
+            -DSMTG_ENABLE_VSTGUI_SUPPORT=OFF -DSMTG_ADD_VSTGUI=OFF -DSMTG_RUN_VST_VALIDATOR=OFF
+          cmake --build sdk-build --target validator --parallel
+          mkdir -p vst3-validator
+          cp "$(find sdk-build -type f -name validator -perm -u+x | head -1)" vst3-validator/validator
+
+      - name: VST3 validator
+        run: ./vst3-validator/validator "build/JGMasteringEQ_artefacts/Release/VST3/JG Mastering EQ.vst3"
+
+      - name: auval (Apple AU validation)
+        run: |
+          mkdir -p ~/Library/Audio/Plug-Ins/Components
+          cp -R "build/JGMasteringEQ_artefacts/Release/AU/JG Mastering EQ.component" ~/Library/Audio/Plug-Ins/Components/
+          killall -9 AudioComponentRegistrar 2>/dev/null || true
+          sleep 2
+          auval -v aufx Jgme Jgds
+
+      - name: pluginval (VST3 + AU, strictness 10)
+        run: |
+          curl -sL -o pv.zip "https://github.com/Tracktion/pluginval/releases/download/${PLUGINVAL_VERSION}/pluginval_macOS.zip"
+          unzip -q pv.zip
+          PV=pluginval.app/Contents/MacOS/pluginval
+          $PV --strictness-level 10 --validate-in-process "build/JGMasteringEQ_artefacts/Release/VST3/JG Mastering EQ.vst3"
+          $PV --strictness-level 10 --validate-in-process ~/Library/Audio/Plug-Ins/Components/"JG Mastering EQ.component"
+
+      - name: Package download
+        run: |
+          A="build/JGMasteringEQ_artefacts/Release"
+          V="$(git describe --tags --always)"
+          mkdir -p "pkg/JG Mastering EQ $V"
+          D="pkg/JG Mastering EQ $V"
+          ditto "$A/VST3/JG Mastering EQ.vst3" "$D/JG Mastering EQ.vst3"
+          ditto "$A/AU/JG Mastering EQ.component" "$D/JG Mastering EQ.component"
+          ditto "$A/Standalone/JG Mastering EQ.app" "$D/JG Mastering EQ.app"
+          cp docs/INSTALL-mac.md "$D/HOW TO INSTALL.txt"
+          mkdir -p "$D/Licenses" && cp ui/fonts/OFL-*.txt "$D/Licenses/"
+          cd pkg && ditto -c -k --keepParent "JG Mastering EQ $V" "../JG-Mastering-EQ-$V-mac.zip"
+          echo "PKG=JG-Mastering-EQ-$V-mac" >> "$GITHUB_ENV"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.PKG }}
+          path: ${{ env.PKG }}.zip
+          retention-days: 30
+
+      - name: Publish a release for version tags
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ env.PKG }}.zip
+          prerelease: ${{ contains(github.ref, '-') }}

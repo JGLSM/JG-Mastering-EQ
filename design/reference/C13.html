@@ -1,0 +1,666 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>JG Designs mastering EQ, colorway: Ice Grey</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..700&amp;family=Michroma&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#F2F3F4}a:hover{color:#FFFFFF}
+</style>
+</helmet>
+<div style="width: 1360px; height: 662px; position: relative; background: #0A0A0B; font-family: Archivo, sans-serif; color: #F2F3F4; overflow: hidden">
+  <div style="position: absolute; left: 12px; top: 12px; width: 1336px; height: 638px; border-radius: 40px; background: {{paint}}; box-shadow: 0 34px 60px rgba(0,0,0,0.85), 0 8px 16px rgba(0,0,0,0.6), inset 0 2px 1px rgba(255,255,255,0.4), inset 0 -4px 10px rgba(0,0,0,0.55); overflow: hidden">
+    <svg width="1336" height="638" viewBox="0 0 1336 638" aria-hidden="true" style="position: absolute; left: 0; top: 0; mix-blend-mode: screen; opacity: 0.44">
+      <filter id="jgFlake" x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="1.15" numOctaves="1" seed="11"/>
+        <feColorMatrix type="matrix" values="0 0 0 0 0.86  0 0 0 0 0.80  0 0 0 0 1  0 0 0 14 -10.1"/>
+      </filter>
+      <filter id="jgFlake2" x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="1" seed="3"/>
+        <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 0.72  0 0 0 0 0.95  0 0 0 18 -14.6"/>
+      </filter>
+      <rect width="1336" height="638" filter="url(#jgFlake)"/>
+      <rect width="1336" height="638" filter="url(#jgFlake2)"/>
+    </svg>
+    <div style="position: absolute; left: 0; top: 0; width: 1336px; height: 638px; background: radial-gradient(ellipse 70% 90% at 18% 0%, rgba(198,212,227,0.20) 0%, transparent 60%), radial-gradient(ellipse 60% 80% at 90% 100%, rgba(106,130,154,0.22) 0%, transparent 65%); mix-blend-mode: soft-light"></div>
+    <div style="position: absolute; left: 0; top: 0; width: 1336px; height: 638px; background: linear-gradient(118deg, transparent 0%, transparent 18%, rgba(255,255,255,0.10) 24%, rgba(255,255,255,0.02) 31%, transparent 36%, transparent 100%)"></div>
+    <div style="position: absolute; left: 0; top: 0; width: 1336px; height: 200px; background: radial-gradient(ellipse 55% 100% at 30% 0%, rgba(255,255,255,0.10) 0%, transparent 70%)"></div>
+
+    <div style="position: absolute; left: 348px; top: 18px; width: 640px; height: 26px; border-radius: 13px; background: linear-gradient(180deg, #050606 0%, #151616 100%); box-shadow: inset 0 2px 4px rgba(0,0,0,0.9), 0 1px 0 rgba(255,255,255,0.3); display: flex; align-items: center; gap: 22px; padding: 0 22px; box-sizing: border-box">
+      <div style="flex-grow: 1; height: 4px; border-radius: 2px; background: #FF3B3F; box-shadow: 0 0 6px rgba(255,40,50,0.95), 0 0 16px rgba(255,30,40,0.6)"></div>
+      <span style="font-stretch: 125%; font-weight: 600; font-size: 12px; letter-spacing: 0.55em; color: #DADDE0">LOVE SCIENCE</span>
+      <div style="flex-grow: 1; height: 4px; border-radius: 2px; background: #FF3B3F; box-shadow: 0 0 6px rgba(255,40,50,0.95), 0 0 16px rgba(255,30,40,0.6)"></div>
+    </div>
+
+    <div style="position: absolute; left: 30px; top: 58px; width: 230px; height: 150px; box-sizing: border-box; border-radius: 22px; background: linear-gradient(180deg, #212325 0%, #111214 100%); box-shadow: inset 0 4px 12px rgba(0,0,0,0.8), 0 1px 0 rgba(255,255,255,0.3); padding: 10px 14px; display: flex; flex-direction: column; gap: 10px">
+      <div style="display: flex; align-items: center; justify-content: space-between">
+        <div style="display: flex; align-items: center; gap: 8px">
+          <span style="width: 18px; height: 18px; border-radius: 50%; border: 1px solid #9AA0A6; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 11px; color: #DADDE0; box-sizing: border-box; box-shadow: inset 1px 1px 1px rgba(0,0,0,0.8), 0 1px 0 rgba(255,255,255,0.12)">1</span>
+          <span style="font-stretch: 125%; font-weight: 700; font-size: 11px; letter-spacing: 0.3em; color: #C4C7CC; text-shadow: 0 -1px 0 rgba(0,0,0,0.95), 0 1px 0 rgba(255,255,255,0.16)">INPUT</span>
+        </div>
+        <button style="height: 24px; padding: 0 11px; border-radius: 12px; border: 1px solid #FF3B3F; background: linear-gradient(180deg, #3A1A22 0%, #160A0E 100%); box-shadow: 0 0 10px rgba(255,59,63,0.45), inset 0 1px 0 rgba(255,255,255,0.15); color: #FFE1E2; font: 700 11px Archivo, sans-serif; font-stretch: 112%; letter-spacing: 0.22em; display: flex; align-items: center; gap: 7px">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: #FF3B3F; box-shadow: 0 0 6px #FF3B3F"></span>LIFT
+        </button>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; height: 96px">
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 3px; width: 46px">
+          <div style="width: 44px; height: 44px; border-radius: 50%; background: repeating-conic-gradient(from 0deg, #A3A8AD 0deg 3deg, #45494E 3deg 6deg); box-shadow: 0 6px 10px rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center">
+            <div style="width: 33px; height: 33px; border-radius: 50%; position: relative; background: radial-gradient(circle at 40% 30%, #2D2E2E 0%, #0C0C0D 75%); box-shadow: inset 0 1px 1px rgba(255,255,255,0.22)">
+              <div style="position: absolute; left: 0; top: 0; width: 33px; height: 33px; transform: rotate(20deg)">
+                <div style="position: absolute; left: 15px; top: 3px; width: 3px; height: 9px; border-radius: 2px; background: #F2F3F4"></div>
+              </div>
+            </div>
+          </div>
+          <span style="font-stretch: 112%; font-weight: 600; font-size: 11px; letter-spacing: 0.12em; color: #A9ACAF; text-shadow: 0 -1px 0 rgba(0,0,0,0.95), 0 1px 0 rgba(255,255,255,0.16)">GAIN</span>
+          <span style="font-stretch: 90%; font-weight: 600; font-size: 11px; color: #F2F3F4; white-space: nowrap">+1.5 dB</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px; align-items: stretch; width: 56px; padding-bottom: 4px">
+          <span style="font-stretch: 90%; font-weight: 600; font-size: 11px; letter-spacing: 0.06em; color: #8F9294; text-align: center; text-shadow: 0 -1px 0 rgba(0,0,0,0.95), 0 1px 0 rgba(255,255,255,0.16)">ANALOGUE</span>
+          <button style="height: 24px; border-radius: 12px; border: 1px solid #393C3E; background: #0C0C0D; color: #A9ACAF; font: 600 11px Archivo, sans-serif; letter-spacing: 0.08em; display: flex; align-items: center; justify-content: center; gap: 5px; padding: 0"><span style="width: 5px; height: 5px; border-radius: 50%; background: #393C3E"></span>CLEAN</button>
+          <button style="height: 24px; border-radius: 12px; border: 1px solid #FF3B3F; background: linear-gradient(180deg, #3A1A22 0%, #160A0E 100%); box-shadow: 0 0 10px rgba(255,59,63,0.35); color: #FFE1E2; font: 600 11px Archivo, sans-serif; letter-spacing: 0.08em; display: flex; align-items: center; justify-content: center; gap: 5px; padding: 0"><span style="width: 5px; height: 5px; border-radius: 50%; background: #FF3B3F; box-shadow: 0 0 6px #FF3B3F"></span>RICH</button>
+        </div>
+        <div style="width: 1px; height: 88px; align-self: center; background: linear-gradient(180deg, transparent, rgba(183,194,205,0.45), transparent)"></div>
+        <div style="width: 46px; height: 86px; box-sizing: border-box; border-radius: 10px; border: 1px solid rgba(255,59,63,0.55); background: #0A0708; box-shadow: inset 0 2px 5px rgba(0,0,0,0.9), 0 0 10px rgba(255,59,63,0.18); padding: 6px 2px; display: flex; flex-direction: column; justify-content: space-between; align-items: center">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 1px">
+            <svg width="24" height="20" viewBox="0 0 26 22" role="img" aria-label="Gentle compression curve">
+              <path d="M2 20 L13 9 L24 4.5" fill="none" stroke="#FF6B6E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 2px rgba(255,59,63,0.9))"/>
+              <path d="M13 9 L22 0" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1" stroke-dasharray="2 2"/>
+            </svg>
+            <span style="font-stretch: 90%; font-weight: 700; font-size: 11px; color: #FFD3D4">1.3:1</span>
+          </div>
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 1px">
+            <svg width="24" height="13" viewBox="0 0 26 14" role="img" aria-label="Small high shelf lift">
+              <path d="M2 10 L12 10 C16 10 17 7 21 7 L24 7" fill="none" stroke="#FF6B6E" stroke-width="1.8" stroke-linecap="round" style="filter: drop-shadow(0 0 2px rgba(255,59,63,0.9))"/>
+            </svg>
+            <span style="font-stretch: 90%; font-weight: 700; font-size: 11px; color: #FFD3D4">+0.1</span>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; width: 40px">
+          <div style="display: flex; gap: 2px">
+            <span style="width: 19px; text-align: center; font-stretch: 75%; font-weight: 700; font-size: 11px; line-height: 1; color: #E8FBFF">−8.4</span>
+            <span style="width: 19px; text-align: center; font-stretch: 75%; font-weight: 700; font-size: 11px; line-height: 1; color: #E8FBFF">−8.9</span>
+          </div>
+          <div style="display: flex; gap: 4px; height: 64px; padding: 4px 5px; box-sizing: border-box; border-radius: 6px; background: #050606; box-shadow: inset 0 2px 5px rgba(0,0,0,0.95)">
+            <sc-for list="{{inBars}}" as="b" hint-placeholder-count="2">
+              <div style="position: relative; width: 9px; height: 56px; border-radius: 2px; background: repeating-linear-gradient(to top, #1B1C1E 0px, #1B1C1E 3px, #050606 3px, #050606 4px); overflow: hidden">
+                <div style="position: absolute; left: 0; bottom: 0; width: 9px; height: {{b.pct}}%; background: linear-gradient(to top, #F2F3F4 0px, #F2F3F4 42px, #FFB347 49px, #FF3B3F 56px); background-size: 9px 56px; background-position: bottom; -webkit-mask-image: repeating-linear-gradient(to top, #000 0px, #000 3px, transparent 3px, transparent 4px); mask-image: repeating-linear-gradient(to top, #000 0px, #000 3px, transparent 3px, transparent 4px)"></div>
+                <div style="position: absolute; left: 0; bottom: {{b.peak}}%; width: 9px; height: 2px; background: {{b.peakColor}}"></div>
+              </div>
+            </sc-for>
+          </div>
+          <span style="font-weight: 600; font-size: 11px; line-height: 1; color: #8F9294; white-space: nowrap; text-shadow: 0 -1px 0 rgba(0,0,0,0.95), 0 1px 0 rgba(255,255,255,0.16)">IN dBFS</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="position: absolute; left: 1076px; top: 58px; width: 230px; height: 150px; box-sizing: border-box; border-radius: 22px; background: linear-gradient(180deg, #212325 0%, #111214 100%); box-shadow: inset 0 4px 12px rgba(0,0,0,0.8), 0 1px 0 rgba(255,255,255,0.3); padding: 10px 14px; display: flex; flex-direction: column; gap: 10px">
+      <div style="display: flex; align-items: center; justify-content: space-between; height: 24px">
+        <span style="font-stretch: 125%; font-weight: 700; font-size: 11px; letter-spacing: 0.3em; color: #C4C7CC; text-shadow: 0 -1px 0 rgba(0,0,0,0.95), 0 1px 0 rgba(255,255,255,0.16)">OUTPUT</span>
+        <span style="height: 22px; box-sizing: border-box; padding: 0 9px; border-radius: 11px; border: 1px solid rgba(92,225,255,0.4); background: rgba(92,225,255,0.06); display: flex; align-items: center; font-weight: 600; font-size: 11px; color: #BFF4FF; white-space: nowrap">−14 LUFS ▾</span>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; height: 96px">
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; width: 40px">
+          <div style="display: flex; gap: 2px">
+            <span style="width: 19px; text-align: center; font-stretch: 75%; font-weight: 700; font-size: 11px; line-height: 1; color: #E8FBFF">−6.2</span>
+            <span style="width: 19px; text-align: center; font-stretch: 75%; font-weight: 700; font-size: 11px; line-height: 1; color: #FFC2C3">−0.9</span>
+          </div>
+          <div style="display: flex; gap: 4px; height: 64px; padding: 4px 5px; box-sizing: border-box; border-radius: 6px; background: #050606; box-shadow: inset 0 2px 5px rgba(0,0,0,0.95)">
+            <sc-for list="{{outBars}}" as="b" hint-placeholder-count="2">
+              <div style="position: relative; width: 9px; height: 56px; border-radius: 2px; background: repeating-linear-gradient(to top, #1B1C1E 0px, #1B1C1E 3px, #050606 3px, #050606 4px); overflow: hidden">
+                <div style="position: absolute; left: 0; bottom: 0; width: 9px; height: {{b.pct}}%; background: linear-gradient(to top, #F2F3F4 0px, #F2F3F4 42px, #FFB347 49px, #FF3B3F 56px); background-size: 9px 56px; background-position: bottom; -webkit-mask-image: repeating-linear-gradient(to top, #000 0px, #000 3px, transparent 3px, transparent 4px); mask-image: repeating-linear-gradient(to top, #000 0px, #000 3px, transparent 3px, transparent 4px)"></div>
+                <div style="position: absolute; left: 0; bottom: {{b.peak}}%; width: 9px; height: 2px; background: {{b.peakColor}}"></div>
+              </div>
+            </sc-for>
+          </div>
+          <span style="font-weight: 600; font-size: 11px; line-height: 1; color: #8F9294; white-space: nowrap; text-shadow: 0 -1px 0 rgba(0,0,0,0.95), 0 1px 0 rgba(255,255,255,0.16)">OUT dBFS</span>
+        </div>
+        <div style="width: 1px; height: 88px; align-self: center; background: linear-gradient(180deg, transparent, rgba(183,194,205,0.45), transparent)"></div>
+        <div style="width: 126px; display: flex; flex-direction: column; gap: 5px">
+          <div style="height: 48px; box-sizing: border-box; border-radius: 10px; background: linear-gradient(180deg, #0E1012 0%, #171B1F 100%); box-shadow: inset 0 3px 8px rgba(0,0,0,0.95), inset 0 0 0 1px rgba(92,225,255,0.22); padding: 5px 9px; display: flex; flex-direction: column; justify-content: space-between">
+            <span style="font-stretch: 100%; font-weight: 600; font-size: 11px; line-height: 1; letter-spacing: 0.1em; color: #8F9294">INTEGRATED</span>
+            <div style="display: flex; align-items: baseline; gap: 5px">
+              <span style="font-stretch: 90%; font-weight: 700; font-size: 22px; line-height: 1; font-variant-numeric: tabular-nums; color: #E8FBFF; text-shadow: 0 0 10px rgba(92,225,255,0.6)">−13.8</span>
+              <span style="font-weight: 600; font-size: 11px; color: #BFF4FF">LUFS</span>
+            </div>
+          </div>
+          <sc-for list="{{lufsRows}}" as="lr" hint-placeholder-count="3">
+            <div style="display: flex; justify-content: space-between; align-items: baseline">
+              <span style="font-stretch: 90%; font-weight: 600; font-size: 11px; line-height: 1; letter-spacing: 0.06em; color: #A9ACAF">{{lr.label}}</span>
+              <span style="font-stretch: 85%; font-weight: 700; font-size: 11px; line-height: 1; font-variant-numeric: tabular-nums; color: {{lr.color}}">{{lr.value}}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <div style="position: absolute; left: 274px; top: 58px; width: 788px; height: 150px; box-sizing: border-box; border-radius: 22px; padding: 2px; background: linear-gradient(180deg, #6A6E76 0%, #34363C 40%, #1C1D21 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.3)">
+      <div style="position: relative; width: 784px; height: 146px; border-radius: 20px; overflow: hidden; background: radial-gradient(ellipse 60% 70% at 40% 30%, #252B32 0%, #101215 75%); box-shadow: inset 0 4px 12px rgba(0,0,0,0.95)">
+        <div style="position: absolute; left: 14px; top: 8px; display: flex; align-items: center; gap: 8px">
+          <span style="width: 18px; height: 18px; border-radius: 50%; border: 1px solid #5CE1FF; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 11px; color: #5CE1FF; box-sizing: border-box; box-shadow: 0 0 6px rgba(92,225,255,0.5)">2</span>
+          <span style="font-stretch: 125%; font-weight: 700; font-size: 11px; letter-spacing: 0.3em; color: #5CE1FF; text-shadow: 0 0 8px rgba(92,225,255,0.7)">SMART EQ</span>
+          <span style="font-weight: 500; font-size: 11px; letter-spacing: 0.08em; color: #A9ACAF">· realtime · subtle</span>
+        </div>
+
+        <div style="position: absolute; left: 14px; top: 32px; width: 564px; height: 104px; border-radius: 14px; overflow: hidden; background: linear-gradient(180deg, #0D0E10 0%, #15191D 60%, #1D2228 100%); box-shadow: inset 0 0 0 1px rgba(92,225,255,0.18), inset 0 4px 12px rgba(0,0,0,0.9)">
+          <div style="position: absolute; left: 0; right: 0; top: 46px; height: 40px; background: radial-gradient(ellipse 60% 100% at 50% 100%, rgba(144,172,201,0.32) 0%, transparent 70%)"></div>
+          <div style="position: absolute; left: -140px; width: 844px; bottom: -14px; height: 80px; background-image: linear-gradient(rgba(92,225,255,0.22) 1px, transparent 1px), linear-gradient(90deg, rgba(92,225,255,0.22) 1px, transparent 1px); background-size: 36px 12px; transform: perspective(160px) rotateX(64deg); transform-origin: 50% 100%; -webkit-mask-image: linear-gradient(to top, #000 30%, transparent 100%); mask-image: linear-gradient(to top, #000 30%, transparent 100%)"></div>
+          <svg width="564" height="104" viewBox="0 0 816 200" preserveAspectRatio="none" role="img" aria-label="Smart EQ display: two gentle cuts, about 1 dB at 250 Hz and 2 dB at 3.5 kHz, inside a plus or minus 3 dB limit" style="position: absolute; left: 0; top: 0">
+            <defs>
+              <linearGradient id="specFill2" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#FF4FD8" stop-opacity="0.38"/>
+                <stop offset="100%" stop-color="#FF4FD8" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <line x1="0" y1="64" x2="816" y2="64" stroke="rgba(92,225,255,0.25)" stroke-width="1" stroke-dasharray="4 5" vector-effect="non-scaling-stroke"/>
+            <line x1="0" y1="136" x2="816" y2="136" stroke="rgba(92,225,255,0.25)" stroke-width="1" stroke-dasharray="4 5" vector-effect="non-scaling-stroke"/>
+            <line x1="0" y1="100" x2="816" y2="100" stroke="rgba(242,243,244,0.35)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+            <path d="M0 200 L0 150 C30 124 60 116 100 122 C140 128 170 116 210 124 C260 134 300 128 340 136 C380 142 420 134 460 140 C520 150 560 140 610 136 C660 146 700 156 740 166 C780 176 800 182 816 188 L816 200 Z" fill="url(#specFill2)"/>
+            <path d="M0 150 C30 124 60 116 100 122 C140 128 170 116 210 124 C260 134 300 128 340 136 C380 142 420 134 460 140 C520 150 560 140 610 136 C660 146 700 156 740 166 C780 176 800 182 816 188" fill="none" stroke="#FF7BE3" stroke-width="1.4" vector-effect="non-scaling-stroke" style="filter: drop-shadow(0 0 4px rgba(255,79,216,0.8))"/>
+            <path d="M200 100 C240 100 260 114 297 114 C334 114 354 100 400 100 Z" fill="rgba(92,225,255,0.26)"/>
+            <path d="M540 100 C570 100 590 124 610 124 C630 124 650 100 690 100 Z" fill="rgba(92,225,255,0.26)"/>
+            <path d="M0 100 L200 100 C240 100 260 114 297 114 C334 114 354 100 400 100 L540 100 C570 100 590 124 610 124 C630 124 650 100 690 100 L816 100" fill="none" stroke="#5CE1FF" stroke-width="2.4" vector-effect="non-scaling-stroke" style="filter: drop-shadow(0 0 4px rgba(92,225,255,0.95)) drop-shadow(0 0 10px rgba(92,225,255,0.5))"/>
+          </svg>
+          <sc-for list="{{smartNodes}}" as="b" hint-placeholder-count="2">
+            <div style="position: absolute; left: {{b.x}}px; top: {{b.y}}px; width: 14px; height: 14px; transform: translate(-50%, -50%); border-radius: 50%; border: 1.5px solid #5CE1FF; background: rgba(92,225,255,0.3); box-shadow: 0 0 8px rgba(92,225,255,0.95), 0 0 18px rgba(92,225,255,0.5); box-sizing: border-box"></div>
+            <span style="position: absolute; left: {{b.lx}}px; top: {{b.ly}}px; transform: translateX(-50%); font-weight: 600; font-size: 11px; color: #BFF4FF; text-shadow: 0 0 6px rgba(92,225,255,0.8)">{{b.t}}</span>
+          </sc-for>
+          <span style="position: absolute; right: 10px; top: 25px; font-weight: 600; font-size: 11px; color: rgba(160,220,240,0.8)">+3</span>
+          <span style="position: absolute; right: 10px; top: 63px; font-weight: 600; font-size: 11px; color: rgba(160,220,240,0.8)">−3</span>
+          <div style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; background: repeating-linear-gradient(180deg, rgba(0,0,0,0.18) 0px, rgba(0,0,0,0.18) 1px, transparent 1px, transparent 3px)"></div>
+          <div style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; background: linear-gradient(172deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.02) 28%, transparent 40%)"></div>
+        </div>
+
+        <div style="position: absolute; left: 590px; top: 12px; width: 180px; height: 124px; display: flex; gap: 12px; align-items: center">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 4px">
+            <div style="position: relative; width: 70px; height: 70px">
+              <svg width="70" height="70" viewBox="0 0 70 70" aria-hidden="true" style="position: absolute; left: 0; top: 0">
+                <path d="{{amount.track}}" stroke="#1E2A38" stroke-width="3" stroke-linecap="round" fill="none"/>
+                <path d="{{amount.arc}}" stroke="#5CE1FF" stroke-width="3" stroke-linecap="round" fill="none" style="filter: drop-shadow(0 0 3px rgba(92,225,255,0.95)) drop-shadow(0 0 8px rgba(92,225,255,0.5))"/>
+              </svg>
+              <div style="position: absolute; left: 10px; top: 10px; width: 50px; height: 50px; border-radius: 50%; background: radial-gradient(circle at 40% 30%, #202326 0%, #090A0B 75%); box-shadow: inset 0 1px 1px rgba(255,255,255,0.18), 0 4px 8px rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 13px; color: #E8FBFF; text-shadow: 0 0 6px rgba(92,225,255,0.7)">30%</div>
+            </div>
+            <span style="font-stretch: 112%; font-weight: 600; font-size: 11px; letter-spacing: 0.18em; color: #A9ACAF; text-shadow: 0 -1px 0 rgba(0,0,0,0.95), 0 1px 0 rgba(255,255,255,0.16)">AMOUNT</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 6px; flex-grow: 1">
+            <sc-for list="{{smartPills}}" as="p" hint-placeholder-count="4">
+              <span style="height: 22px; box-sizing: border-box; border-radius: 11px; border: 1px solid {{p.border}}; background: {{p.bg}}; box-shadow: {{p.glow}}; display: flex; align-items: center; justify-content: center; font-stretch: 112%; font-weight: 600; font-size: 11px; letter-spacing: 0.12em; color: {{p.color}}">{{p.t}}</span>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="position: absolute; left: 30px; top: 222px; width: 1276px; height: 340px; border-radius: 26px; overflow: hidden; background: radial-gradient(ellipse 60% 55% at 50% 42%, rgba(131,148,165,0.36) 0%, rgba(88,104,120,0.16) 45%, transparent 75%), radial-gradient(ellipse 90% 40% at 50% 110%, rgba(139,160,181,0.22) 0%, transparent 70%), repeating-linear-gradient(45deg, rgba(183,194,205,0.075) 0px, rgba(183,194,205,0.075) 1px, transparent 1px, transparent 6px), repeating-linear-gradient(-45deg, rgba(183,194,205,0.075) 0px, rgba(183,194,205,0.075) 1px, transparent 1px, transparent 6px), repeating-linear-gradient(45deg, rgba(0,0,0,0.22) 0px, rgba(0,0,0,0.22) 3px, transparent 3px, transparent 6px), linear-gradient(180deg, #23282E 0%, #161A1F 55%, #1D2227 100%); box-shadow: inset 0 20px 34px rgba(0,0,0,0.6), inset 0 -10px 24px rgba(0,0,0,0.45), inset 18px 0 30px rgba(0,0,0,0.38), inset -18px 0 30px rgba(0,0,0,0.38), inset 0 0 0 1px rgba(183,194,205,0.16), 0 1px 0 rgba(255,255,255,0.3)">
+      <svg width="1276" height="340" viewBox="0 0 1276 340" aria-hidden="true" style="position: absolute; left: 0; top: 0; mix-blend-mode: overlay; opacity: 0.5">
+        <filter id="jgGrain" x="0" y="0" width="100%" height="100%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="5"/>
+          <feColorMatrix type="matrix" values="0 0 0 0 0.78  0 0 0 0 0.68  0 0 0 0 0.95  0 0 0 1.6 -0.55"/>
+        </filter>
+        <rect width="1276" height="340" filter="url(#jgGrain)"/>
+      </svg>
+      <div style="position: absolute; left: 6%; right: 6%; top: 128px; height: 14px; border-radius: 7px; background: radial-gradient(ellipse 50% 100% at 50% 50%, rgba(184,203,221,0.35) 0%, transparent 70%); filter: blur(6px)"></div>
+      <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(184,203,221,0.55), transparent); box-shadow: 0 0 10px rgba(184,203,221,0.5)"></div>
+      <div style="position: absolute; left: 0; top: 0; right: 0; height: 60px; background: linear-gradient(180deg, rgba(255,255,255,0.05), transparent)"></div>
+      <div style="position: absolute; left: 16px; top: 12px; display: flex; align-items: center; gap: 8px; z-index: 5">
+        <span style="width: 18px; height: 18px; border-radius: 50%; border: 1px solid #9AA0A6; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 11px; color: #DADDE0; box-sizing: border-box; box-shadow: inset 1px 1px 1px rgba(0,0,0,0.8), 0 1px 0 rgba(255,255,255,0.12)">3</span>
+        <span style="font-stretch: 125%; font-weight: 700; font-size: 11px; letter-spacing: 0.3em; color: #C4C7CC; text-shadow: 0 -1px 0 rgba(0,0,0,0.95), 0 1px 0 rgba(255,255,255,0.16)">PASSIVE EQ</span>
+        <span style="width: 14px; height: 4px; border-radius: 2px; margin-left: 10px; background: #FF3B3F; box-shadow: 0 0 6px rgba(255,59,63,0.9)"></span>
+        <span style="font-weight: 600; font-size: 11px; letter-spacing: 0.1em; color: #A9ACAF; text-shadow: 0 -1px 0 rgba(0,0,0,0.95), 0 1px 0 rgba(255,255,255,0.16)">past redline = color</span>
+      </div>
+      <div style="position: absolute; right: 16px; top: 8px; display: flex; align-items: center; gap: 10px; z-index: 5">
+        <span style="font-stretch: 112%; font-weight: 600; font-size: 11px; letter-spacing: 0.2em; color: #A9ACAF; text-shadow: 0 -1px 0 rgba(0,0,0,0.95), 0 1px 0 rgba(255,255,255,0.16)">COLOR</span>
+        <div style="display: flex; padding: 2px; border-radius: 12px; background: #050606; box-shadow: inset 0 1px 3px rgba(0,0,0,0.95), 0 1px 0 rgba(255,255,255,0.08)">
+          <sc-for list="{{charPills}}" as="cp" hint-placeholder-count="3">
+            <span style="padding: 3px 10px; border-radius: 10px; font-stretch: 112%; font-weight: 600; font-size: 11px; letter-spacing: 0.1em; color: {{cp.color}}; background: {{cp.bg}}; box-shadow: {{cp.glow}}">{{cp.t}}</span>
+          </sc-for>
+        </div>
+      </div>
+      <sc-for list="{{rows}}" as="row" hint-placeholder-count="1">
+        <sc-if value="{{row.hasLabel}}" hint-placeholder-val="{{ false }}">
+          <div style="position: absolute; left: 24px; top: {{row.badgeTop}}px; width: 72px; height: 84px; box-sizing: border-box; border-radius: 16px; background: linear-gradient(180deg, #1C1C1D 0%, #0A0A0B 100%); border: 1px solid #343637; box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 8px 14px rgba(0,0,0,0.6); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px">
+            <span style="font-family: Michroma, sans-serif; font-size: 30px; line-height: 1; background: linear-gradient(180deg, #FFFFFF 0%, #DADDE2 38%, #8E939A 52%, #E9ECEF 100%); -webkit-background-clip: text; background-clip: text; color: transparent">{{row.ch}}</span>
+            <span style="font-stretch: 112%; font-weight: 600; font-size: 11px; letter-spacing: 0.22em; color: #A9ACAF">{{row.chName}}</span>
+          </div>
+          <div style="position: absolute; left: 968px; top: {{row.meterTop}}px; display: flex; flex-direction: column; align-items: center; gap: 6px">
+            <div style="width: 14px; height: 120px; box-sizing: border-box; padding: 3px; border-radius: 6px; background: #050606; box-shadow: inset 0 2px 5px rgba(0,0,0,0.95), 0 1px 0 rgba(255,255,255,0.08); display: flex; align-items: flex-end">
+              <div style="width: 8px; height: {{row.meter}}%; background: repeating-linear-gradient(180deg, #F2F3F4 0px, #F2F3F4 3px, #050606 3px, #050606 4px); box-shadow: 0 0 5px rgba(242,243,244,0.4)"></div>
+            </div>
+            <span style="font-weight: 600; font-size: 11px; letter-spacing: 0.14em; color: #A9ACAF">OUT</span>
+          </div>
+        </sc-if>
+        <sc-for list="{{row.dials}}" as="d" hint-placeholder-count="7">
+          <div style="position: absolute; left: {{d.left}}px; top: {{d.top}}px; width: {{d.s}}px; height: {{d.s}}px; border-radius: 50%; z-index: {{d.z}}; background: conic-gradient(from 210deg, #4E5358, #D6DADE 12%, #43474C 30%, #B4B9BE 50%, #3C4045 70%, #DCE0E3 86%, #4E5358); box-shadow: 0 0 0 4px #0A0B0D, 0 0 0 5px rgba(183,194,205,0.18), 0 18px 30px rgba(0,0,0,0.85), 0 4px 8px rgba(0,0,0,0.6), 0 0 36px rgba(115,131,147,0.26)">
+            <div style="position: absolute; left: 4px; top: 4px; width: {{d.chamfer}}px; height: {{d.chamfer}}px; border-radius: 50%; background: linear-gradient(180deg, #1F2022 0%, #383A3B 100%); box-shadow: inset 0 2px 3px rgba(0,0,0,0.85)"></div>
+            <div style="position: absolute; left: 8px; top: 8px; width: {{d.f}}px; height: {{d.f}}px; border-radius: 50%; overflow: hidden; background: radial-gradient(circle at 50% 50%, #292C2E 0%, #191B1E 55%, #0F1011 100%); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05)">
+              <div style="position: absolute; left: 0; top: 0; width: {{d.f}}px; height: {{d.f}}px; border-radius: 50%; background: repeating-conic-gradient(from 0deg, rgba(255,255,255,0.028) 0deg 1deg, rgba(0,0,0,0.05) 1deg 2deg); filter: blur(0.4px)"></div>
+              <div style="position: absolute; left: 0; top: 0; width: {{d.f}}px; height: {{d.f}}px; border-radius: 50%; background: conic-gradient(from 0deg, transparent 0deg, transparent 92deg, rgba(218,227,237,0.12) 135deg, transparent 178deg, transparent 268deg, rgba(218,227,237,0.12) 315deg, transparent 358deg)"></div>
+              <div style="position: absolute; left: 0; top: 0; width: {{d.f}}px; height: {{d.f}}px; border-radius: 50%; box-shadow: inset 0 14px 22px rgba(0,0,0,0.9), inset 0 -6px 14px rgba(0,0,0,0.7)"></div>
+              <svg width="{{d.f}}" height="{{d.f}}" viewBox="{{d.vb}}" aria-hidden="true" style="position: absolute; left: 0; top: 0; filter: drop-shadow(0 1px 1.5px rgba(0,0,0,0.9))">
+                <path d="{{d.minor}}" stroke="#E6E7EA" stroke-width="1.1" fill="none"/>
+                <path d="{{d.gArc}}" stroke="{{d.gArcColor}}" stroke-width="2.4" stroke-linecap="round" fill="none" style="filter: {{d.gArcGlow}}"/>
+              </svg>
+              <div style="position: absolute; left: 0; top: 0; width: {{d.f}}px; height: {{d.f}}px; filter: drop-shadow(0 1.6px 0.8px rgba(0,0,0,0.95))">
+                <sc-for list="{{d.idx}}" as="ix" hint-placeholder-count="7">
+                  <div style="position: absolute; left: {{ix.x}}px; top: {{ix.y}}px; width: 4px; height: 12px; box-sizing: border-box; border-radius: 1px; transform: translate(-50%, -50%) rotate({{ix.r}}deg); background: linear-gradient(90deg, #6E737A 0%, #FFFFFF 38%, #DADDE1 50%, #8E939A 62%, #5A5E64 100%); border: 0.5px solid rgba(0,0,0,0.45)"></div>
+                </sc-for>
+              </div>
+              <sc-for list="{{d.nums}}" as="n" hint-placeholder-count="7">
+                <span style="position: absolute; left: {{n.x}}px; top: {{n.y}}px; transform: translate(-50%, -50%); font-family: Michroma, sans-serif; font-weight: 400; font-size: {{d.numSize}}px; line-height: 1; color: #FFFFFF; text-shadow: 0 1px 2px rgba(0,0,0,0.95), 0 0 6px rgba(255,255,255,0.18)">{{n.t}}</span>
+              </sc-for>
+              <span style="position: absolute; left: 0; right: 0; top: {{d.labelTop}}px; text-align: center; font-stretch: 90%; font-weight: 600; font-size: 11px; letter-spacing: 0.08em; color: #A9ACAF; text-shadow: 0 -1px 0 rgba(0,0,0,0.95), 0 1px 0 rgba(255,255,255,0.16)">{{d.name}}</span>
+              <span style="position: absolute; left: 0; right: 0; top: {{d.valueTop}}px; text-align: center; font-stretch: 90%; font-weight: 600; font-size: 12px; color: #F2F3F4; text-shadow: 0 1px 2px rgba(0,0,0,0.9)">{{d.value}}</span>
+              <div style="position: absolute; left: 0; top: 0; width: {{d.f}}px; height: {{d.f}}px; filter: drop-shadow(0 6px 5px rgba(0,0,0,0.85))">
+                <div style="position: absolute; left: 0; top: 0; width: {{d.f}}px; height: {{d.f}}px; transform: rotate({{d.rot}}deg)">
+                  <div style="position: absolute; left: {{d.nLeft}}px; top: {{d.nTop}}px; width: 5px; height: {{d.nLen}}px; border-radius: 3px 3px 1px 1px; background: linear-gradient(90deg, #9E0E16 0%, #FF5A5A 50%, #B5121B 100%); box-shadow: 0 0 6px rgba(255,40,40,0.55)"></div>
+                  <div style="position: absolute; left: {{d.skirtLeft}}px; top: {{d.skirtLeft}}px; width: {{d.skirtSize}}px; height: {{d.skirtSize}}px; border-radius: 50%; background: radial-gradient(circle at 40% 30%, #3A1418 0%, #1A0A0D 70%); box-shadow: inset 0 0 0 1.5px #C8121C, inset 0 1px 1px rgba(255,255,255,0.18)"></div>
+                </div>
+              </div>
+              <div style="position: absolute; left: 0; top: 0; width: {{d.f}}px; height: {{d.f}}px; filter: drop-shadow(0 8px 7px rgba(0,0,0,0.85))">
+                <div style="position: absolute; left: {{d.knobLeft}}px; top: {{d.knobLeft}}px; width: {{d.knobSize}}px; height: {{d.knobSize}}px; border-radius: 50%; background: repeating-conic-gradient(from 0deg, #BFC4C9 0deg 3deg, #4A4E53 3deg 6deg); box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), inset 0 -2px 3px rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center">
+                  <div style="width: {{d.capSize}}px; height: {{d.capSize}}px; border-radius: 50%; position: relative; background: radial-gradient(circle at 38% 28%, #414243 0%, #151617 60%, #090909 100%); box-shadow: inset 0 1px 1px rgba(255,255,255,0.3), inset 0 -3px 5px rgba(0,0,0,0.75)">
+                    <div style="position: absolute; left: 0; top: 0; width: {{d.capSize}}px; height: {{d.capSize}}px; transform: rotate({{d.gRot}}deg)">
+                      <div style="position: absolute; left: {{d.gPtrLeft}}px; top: 3px; width: 3px; height: {{d.gPtrH}}px; border-radius: 2px; background: {{d.gPtr}}; box-shadow: {{d.gPtrGlow}}"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div style="position: absolute; left: 0; top: 0; width: {{d.f}}px; height: {{d.f}}px; border-radius: 50%; background: radial-gradient(circle at 50% 50%, transparent 62%, rgba(0,0,0,0.38) 86%, rgba(0,0,0,0.62) 100%)"></div>
+            </div>
+          </div>
+        </sc-for>
+      </sc-for>
+      <svg width="1276" height="338" viewBox="0 0 1276 338" aria-hidden="true" style="position: absolute; left: 0; top: 0; z-index: 0">
+        <path d="{{win.stems}}" fill="none" stroke="rgba(200,205,210,0.32)" stroke-width="1.2"/>
+        <path d="{{win.hotStems}}" fill="none" stroke="#FF3B3F" stroke-width="1.4" style="filter: drop-shadow(0 0 4px rgba(255,59,63,0.85))"/>
+      </svg>
+      <div style="position: absolute; left: {{win.left}}px; top: {{win.top}}px; width: {{win.w}}px; height: {{win.h}}px; box-sizing: border-box; border-radius: 16px; padding: 4px; border: 1px solid rgba(183,194,205,0.22); background: linear-gradient(180deg, rgba(183,194,205,0.10) 0%, rgba(0,0,0,0.3) 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 10px 20px rgba(0,0,0,0.55)">
+        <div style="position: relative; width: {{win.iw}}px; height: {{win.ih}}px; border-radius: 12px; overflow: hidden; background: linear-gradient(180deg, #0E1012 0%, #171B1F 100%); box-shadow: inset 0 3px 10px rgba(0,0,0,0.95), inset 0 0 0 1px rgba(92,225,255,0.18)">
+          <div style="position: absolute; left: {{win.active.x}}px; top: 3px; width: {{win.active.w}}px; height: 60px; box-sizing: border-box; border-radius: 10px; border: 1px solid {{win.active.border}}; background: {{win.active.bg}}; box-shadow: 0 0 14px {{win.active.halo}}"></div>
+          <svg width="{{win.iw}}" height="{{win.ih}}" viewBox="{{win.vb}}" role="img" aria-label="Q display: each band shows its shape and Q; the active band shows its full curve and handles" style="position: absolute; left: 0; top: 0">
+            <path d="{{win.icons}}" fill="none" stroke="rgba(191,244,255,0.75)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="{{win.hotIcons}}" fill="none" stroke="#FF8A8C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="{{win.active.fill}}" fill="{{win.active.fillColor}}"/>
+            <path d="{{win.active.curve}}" fill="none" stroke="{{win.active.color}}" stroke-width="2" style="filter: drop-shadow(0 0 3px {{win.active.glow}})"/>
+            <path d="{{win.active.bar}}" fill="none" stroke="{{win.active.handle}}" stroke-width="1" stroke-dasharray="3 3" opacity="0.8"/>
+          </svg>
+          <sc-for list="{{win.active.handles}}" as="h" hint-placeholder-count="2">
+            <div style="position: absolute; left: {{h.x}}px; top: {{h.y}}px; width: 10px; height: 10px; transform: translate(-50%, -50%); border-radius: 50%; box-sizing: border-box; border: 1.5px solid {{win.active.handle}}; background: #07080A; box-shadow: 0 0 6px {{win.active.glow}}"></div>
+          </sc-for>
+          <sc-for list="{{win.labels}}" as="z" hint-placeholder-count="6">
+            <span style="position: absolute; left: {{z.x}}px; top: 22px; font-weight: 700; font-size: 15px; line-height: 1; font-variant-numeric: tabular-nums; color: {{z.color}}">{{z.q}}</span>
+            <span style="position: absolute; left: {{z.x}}px; top: 41px; font-weight: 500; font-size: 11px; line-height: 1; letter-spacing: 0.1em; color: #8F9294">Q</span>
+          </sc-for>
+          <span style="position: absolute; left: {{win.active.textX}}px; top: 8px; font-weight: 700; font-size: 12px; line-height: 1; color: {{win.active.text}}">Q {{win.active.q}}</span>
+          <span style="position: absolute; left: {{win.active.chipX}}px; top: 45px; transform: translateX(-100%); height: 15px; box-sizing: border-box; padding: 0 6px; border-radius: 8px; border: 1px solid {{win.active.border}}; background: rgba(7,8,10,0.85); display: flex; align-items: center; gap: 4px; font-weight: 600; font-size: 11px; line-height: 1; color: {{win.active.text}}; white-space: nowrap">{{win.active.shape}} ▾</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="position: absolute; left: 44px; top: 586px; width: 206px; height: 24px; display: flex; flex-direction: column; justify-content: center; gap: 3px">
+      <span style="font-stretch: 125%; font-weight: 600; font-size: 11px; line-height: 1; letter-spacing: 0.22em; color: #C9D2DB; text-shadow: 0 -1px 0 rgba(18,24,30,0.9), 0 1px 0 rgba(225,232,240,0.28)">MASTERING EQ</span>
+    </div>
+    <div style="position: absolute; left: 260px; top: 576px; width: 816px; height: 44px; display: flex; align-items: center; gap: 24px">
+      <div style="flex-grow: 1; height: 26px; border-radius: 13px; background: repeating-linear-gradient(90deg, #0A0A0B 0px, #0A0A0B 5px, #2E3031 5px, #2E3031 7px); box-shadow: inset 0 2px 4px rgba(0,0,0,0.9), 0 1px 0 rgba(255,255,255,0.25)"></div>
+      <div style="height: 42px; box-sizing: border-box; padding: 2px; border-radius: 21px; background: linear-gradient(135deg, #FFFFFF 0%, #C9CDD2 22%, #6E737A 48%, #E6E8EB 70%, #8E939A 100%); box-shadow: 0 8px 12px rgba(0,0,0,0.75), 0 3px 4px rgba(0,0,0,0.6)">
+        <div style="position: relative; height: 38px; box-sizing: border-box; padding: 0 24px; border-radius: 19px; overflow: hidden; background: radial-gradient(ellipse 80% 120% at 30% 0%, #282F36 0%, #111519 55%, #07080A 100%); box-shadow: inset 0 2px 4px rgba(0,0,0,0.9), inset 0 0 0 1px rgba(0,0,0,0.6); display: flex; align-items: center; gap: 16px">
+          <span style="font-family: Michroma, sans-serif; font-size: 24px; line-height: 1; letter-spacing: 0.06em; background: linear-gradient(180deg, #FFFFFF 0%, #E4E7EA 36%, #8E939A 52%, #F2F4F6 100%); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 1.5px 0 rgba(0,0,0,0.9))">JG</span>
+          <span style="width: 1px; height: 22px; background: linear-gradient(180deg, transparent, rgba(255,255,255,0.75), transparent)"></span>
+          <span style="font-stretch: 125%; font-weight: 600; font-size: 13px; letter-spacing: 0.6em; margin-right: -0.6em; background: linear-gradient(180deg, #FFFFFF 0%, #DADDE2 45%, #9AA0A6 60%, #EEF0F2 100%); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 1px 0 rgba(0,0,0,0.9))">DESIGNS</span>
+          <div style="position: absolute; left: 0; top: 0; right: 0; height: 17px; border-radius: 19px 19px 40% 40%; background: linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.03) 100%)"></div>
+        </div>
+      </div>
+      <div style="flex-grow: 1; height: 26px; border-radius: 13px; background: repeating-linear-gradient(90deg, #0A0A0B 0px, #0A0A0B 5px, #2E3031 5px, #2E3031 7px); box-shadow: inset 0 2px 4px rgba(0,0,0,0.9), 0 1px 0 rgba(255,255,255,0.25)"></div>
+    </div>
+    <div style="position: absolute; left: 1150px; top: 584px; width: 132px; height: 28px; box-sizing: border-box; border-radius: 7px; padding: 0 12px; background: repeating-linear-gradient(90deg, rgba(255,255,255,0.07) 0px, rgba(255,255,255,0.07) 1px, rgba(0,0,0,0.06) 1px, rgba(0,0,0,0.06) 2px), linear-gradient(180deg, #E9EBEE 0%, #B4B9BF 45%, #8E939A 70%, #C9CDD2 100%); box-shadow: 0 6px 8px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.8), inset 0 -1px 0 rgba(0,0,0,0.35); display: flex; align-items: center; justify-content: space-between">
+      <span style="width: 5px; height: 5px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #FFFFFF 0%, #8E939A 60%, #4A4E53 100%); box-shadow: inset 0 0 0 0.5px rgba(0,0,0,0.6)"></span>
+      <span style="font-family: Michroma, sans-serif; font-size: 11px; line-height: 1; letter-spacing: 0.12em; color: #3A3D42; text-shadow: 0 1px 0 rgba(255,255,255,0.7), 0 -1px 0 rgba(0,0,0,0.25)">Nº 0001</span>
+      <span style="width: 5px; height: 5px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #FFFFFF 0%, #8E939A 60%, #4A4E53 100%); box-shadow: inset 0 0 0 0.5px rgba(0,0,0,0.6)"></span>
+    </div>
+    <sc-for list="{{screws}}" as="sw" hint-placeholder-count="6">
+      <div style="position: absolute; left: {{sw.x}}px; top: {{sw.y}}px; width: 13px; height: 13px; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(circle at 50% 70%, rgba(255,255,255,0.22) 0%, transparent 60%), #181D22; box-shadow: inset 0 1.5px 2px rgba(0,0,0,0.85), 0 1px 0 rgba(225,232,240,0.25)">
+        <div style="position: absolute; left: 1.5px; top: 1.5px; width: 10px; height: 10px; border-radius: 50%; background: radial-gradient(circle at 50% 30%, #FFFFFF 0%, #D6DADE 22%, #8E939A 58%, #4A4E53 100%); box-shadow: 0 2px 2px rgba(0,0,0,0.7), inset 0 -0.5px 1px rgba(0,0,0,0.5)">
+          <div style="position: absolute; left: 0; top: 0; width: 10px; height: 10px; transform: rotate({{sw.r}}deg)">
+            <div style="position: absolute; left: 1.5px; top: 4.2px; width: 7px; height: 1.6px; border-radius: 1px; background: #1A1B1E; box-shadow: 0 0.6px 0 rgba(255,255,255,0.55)"></div>
+          </div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1360,"height":662}}'>
+class Component extends DCLogic {
+  pt(cx, cy, r, deg) {
+    const a = deg * Math.PI / 180;
+    return [cx + r * Math.sin(a), cy - r * Math.cos(a)];
+  }
+  seg(c, r1, r2, deg) {
+    const p = this.pt(c, c, r1, deg);
+    const q = this.pt(c, c, r2, deg);
+    return 'M' + p[0].toFixed(2) + ' ' + p[1].toFixed(2) + ' L' + q[0].toFixed(2) + ' ' + q[1].toFixed(2) + ' ';
+  }
+  arc(c, r, a0, a1) {
+    const p = this.pt(c, c, r, a0);
+    const q = this.pt(c, c, r, a1);
+    const large = a1 - a0 > 180 ? 1 : 0;
+    return 'M' + p[0].toFixed(2) + ' ' + p[1].toFixed(2) + ' A' + r + ' ' + r + ' 0 ' + large + ' 1 ' + q[0].toFixed(2) + ' ' + q[1].toFixed(2);
+  }
+  dial(o) {
+    const s = o.s;
+    const f = s - 16;
+    const c = f / 2;
+    const n = o.nums.length;
+    const step = 270 / (n - 1);
+    let minor = '';
+    for (let a = -135; a <= 135.01; a += step / 5) minor += this.seg(c, c - 8, c - 3, a);
+    let major = '';
+    const angles = o.nums.map((t, i) => -135 + i * step);
+    angles.forEach((a) => { major += this.seg(c, c - 14, c - 3, a); });
+    const R = c - o.inset;
+    const nums = o.nums.map((t, i) => {
+      const p = this.pt(c, c, R, angles[i]);
+      return { x: p[0].toFixed(1), y: p[1].toFixed(1), t };
+    });
+    const rot = -135 + o.at * step;
+    const kr = Math.round(f * 0.15);
+    const g = o.gain;
+    const hot = g > o.redline;
+    const gAng = -g / 10 * 135;
+    let gArc = 'M0 0';
+    if (g > 0) gArc = this.arc(c, kr + 9, gAng, 0);
+    else if (g < 0) gArc = this.arc(c, kr + 9, 0, gAng);
+    const cap = kr * 2 - 12;
+    const nLen = c - 12;
+    const idx = angles.map((a) => {
+      const p = this.pt(c, c, c - 9, a);
+      return { x: p[0].toFixed(2), y: p[1].toFixed(2), r: a };
+    });
+    return {
+      idx, s, f, vb: '0 0 ' + f + ' ' + f, left: o.cx - s / 2, top: o.cy - s / 2, z: o.z, chamfer: s - 8,
+      minor, major, nums, numSize: o.numSize, name: o.name, value: o.value, rot,
+      labelTop: Math.round(c + f * 0.21), valueTop: Math.round(c + f * (o.valueK || 0.29)),
+      nLeft: c - 2.5, nTop: c - nLen, nLen,
+      skirtLeft: c - kr - 6, skirtSize: (kr + 6) * 2,
+      knobLeft: c - kr, knobSize: kr * 2, capSize: cap,
+      gRot: gAng, gPtrLeft: cap / 2 - 1.5, gPtrH: Math.round(cap * 0.32),
+      gPtr: hot ? '#FF3B3F' : '#F2F3F4', gPtrGlow: hot ? '0 0 6px rgba(255,59,63,0.9)' : 'none',
+      gArc, gArcColor: hot ? '#FF3B3F' : (g < 0 ? '#5CE1FF' : '#F2F3F4'),
+      gArcGlow: hot ? 'drop-shadow(0 0 3px rgba(255,59,63,0.95))' : (g < 0 ? 'drop-shadow(0 0 3px rgba(92,225,255,0.8))' : 'none')
+    };
+  }
+  parseHz(x) {
+    const t = x.replace(' Hz', '').replace(' kHz', 'k');
+    return t.endsWith('k') ? parseFloat(t) * 1000 : parseFloat(t);
+  }
+  seg2(cx, cy, r1, r2, deg) {
+    const p = this.pt(cx, cy, r1, deg);
+    const q = this.pt(cx, cy, r2, deg);
+    return 'M' + p[0].toFixed(2) + ' ' + p[1].toFixed(2) + ' L' + q[0].toFixed(2) + ' ' + q[1].toFixed(2) + ' ';
+  }
+  arc2(cx, cy, r, a0, a1) {
+    const p = this.pt(cx, cy, r, a0);
+    const q = this.pt(cx, cy, r, a1);
+    const large = a1 - a0 > 180 ? 1 : 0;
+    return 'M' + p[0].toFixed(2) + ' ' + p[1].toFixed(2) + ' A' + r + ' ' + r + ' 0 ' + large + ' 1 ' + q[0].toFixed(2) + ' ' + q[1].toFixed(2);
+  }
+  renderVals() {
+    const paint = 'linear-gradient(180deg, #76828E 0%, #606B77 16%, #67737F 48%, #515B66 80%, #727E8A 100%)';
+    const sizes = [196, 184, 174, 166, 174, 184, 196];
+    const centersX = [141, 317, 482, 638, 794, 959, 1135];
+    const insets = [28, 27, 25, 24, 25, 27, 28];
+    const numSizes = [12, 12, 12, 12, 12, 12, 12];
+    const valSizes = [12, 12, 12, 12, 12, 12, 12];
+    const rowDefs = [ { ch: '', chName: '', top: 44, meter: 0, gains: [5, 1.5, -1.5, 0, -1, 4.5, 2.5] } ];
+    const maxS = 196;
+    const zs = [1, 2, 3, 4, 3, 2, 1];
+    const dialOffsets = [0, -14, -26, -36, -26, -14, 0];
+    const redline = 4;
+    const bandDefs = [
+      { name: 'SUB', value: '40 Hz', nums: ['16', '20', '25', '30', '40', '50', '60', '80', '100'], at: 4, q: '0.7', qr: -40, tagName: 'HARMONICS' },
+      { name: 'LOW', value: '100 Hz', nums: ['40', '60', '80', '100', '150', '200', '300'], at: 3, q: '0.8', qr: -30, tagName: 'HARMONICS' },
+      { name: 'LOW MID', value: '300 Hz', nums: ['150', '200', '300', '400', '500', '700', '1k'], at: 2, q: '1.2', qr: 0, tagName: 'SATURATING' },
+      { name: 'MID', value: '1 kHz', nums: ['500', '700', '1k', '1.4k', '2k', '2.8k', '4k'], at: 2, q: '1.0', qr: -15, tagName: 'SATURATING' },
+      { name: 'HIGH MID', value: '3 kHz', nums: ['1.5k', '2k', '2.5k', '3k', '4k', '5k', '6k'], at: 3, q: '1.4', qr: 15, tagName: 'SATURATING' },
+      { name: 'PRESENCE', value: '6 kHz', nums: ['3k', '4k', '5k', '6k', '8k', '10k', '12k'], at: 3, q: '2.0', qr: 40, tagName: 'SATURATING' },
+      { name: 'AIR', value: '16 kHz', nums: ['6k', '8k', '10k', '12k', '14k', '16k', '18k', '20k', '24k'], at: 5, q: '0.7', qr: -40, tagName: 'SATURATING' }
+    ];
+    const rows = rowDefs.map((r) => {
+      const cy = r.top + maxS / 2;
+      const dials = bandDefs.map((b, i) => this.dial({
+        s: sizes[i], cx: centersX[i], cy: cy + dialOffsets[i], z: zs[i], name: b.name, value: b.value, nums: b.nums, at: b.at,
+        inset: insets[i], numSize: i === 0 || i === 6 ? 12 : 11, gain: r.gains[i], redline
+      }));
+      const pods = bandDefs.map((b, i) => {
+        const g = r.gains[i];
+        const hot = g > redline;
+        const dialBottom = cy + dialOffsets[i] + sizes[i] / 2;
+        const podTop = dialBottom + 12;
+        const qn = parseFloat(b.q);
+        const type = i === 0 ? 'low' : (i === bandDefs.length - 1 ? 'high' : 'bell');
+        const Y0 = 43;
+        const k = 2.2;
+        const w = 34 / qn;
+        const fn = (x) => {
+          if (type === 'bell') return g * Math.exp(-Math.pow((x - 61) / w, 2));
+          if (type === 'low') return g / (1 + Math.exp((x - 52) / (6 / qn)));
+          return g / (1 + Math.exp(-(x - 70) / (6 / qn)));
+        };
+        const pts = [];
+        for (let x = 0; x <= 122; x += 2) pts.push([x, Y0 - fn(x) * k]);
+        const curve = 'M' + pts.map((pp) => pp[0] + ' ' + pp[1].toFixed(2)).join(' L');
+        const fill = curve + ' L122 ' + Y0 + ' L0 ' + Y0 + ' Z';
+        let handles;
+        let widthBar = 'M0 0';
+        if (type === 'bell') {
+          const hx1 = 61 - 0.589 * w;
+          const hx2 = 61 + 0.589 * w;
+          const hy = Y0 - g * 0.707 * k;
+          handles = [ { x: hx1.toFixed(1), y: hy.toFixed(1) }, { x: hx2.toFixed(1), y: hy.toFixed(1) } ];
+          widthBar = 'M' + hx1.toFixed(1) + ' ' + hy.toFixed(1) + ' L' + hx2.toFixed(1) + ' ' + hy.toFixed(1);
+        } else {
+          const hx = type === 'low' ? 52 : 70;
+          handles = [ { x: hx, y: (Y0 - (g / 2) * k).toFixed(1) } ];
+        }
+        const sign = g > 0 ? '+' : (g < 0 ? '−' : '');
+        const icons = { bell: 'M1 8 C4 8 4.5 1 6.5 1 C8.5 1 9 8 12 8', low: 'M1 2 L4 2 C6 2 7 8 9 8 L12 8', high: 'M1 8 L4 8 C6 8 7 2 9 2 L12 2' };
+        return {
+          left: centersX[i] - 66, top: podTop, cx: centersX[i], tagTop: podTop - 10,
+          hasTag: hot, tag: b.tagName,
+          stemLeft: centersX[i] - 1, stemTop: dialBottom + 2, stemH: Math.max(0, podTop - dialBottom - 2),
+          stemColor: hot ? 'linear-gradient(180deg, rgba(255,59,63,0.9), rgba(255,59,63,0.25))' : 'linear-gradient(180deg, rgba(200,205,210,0.45), rgba(200,205,210,0.08))',
+          stemGlow: hot ? '0 0 6px rgba(255,59,63,0.8)' : 'none',
+          border: hot ? 'rgba(255,59,63,0.45)' : 'rgba(183,194,205,0.2)',
+          halo: hot ? '0 0 16px rgba(255,59,63,0.22)' : '0 0 0 rgba(0,0,0,0)',
+          curve, fill, handles, widthBar,
+          freq: b.value, q: b.q, gainText: sign + Math.abs(g).toFixed(1) + ' dB',
+          shape: type === 'bell' ? 'BELL' : 'SHELF', shapeIcon: icons[type],
+          curveColor: hot ? '#FF5A5D' : '#5CE1FF', curveGlow: hot ? 'rgba(255,59,63,0.9)' : 'rgba(92,225,255,0.9)',
+          handleColor: hot ? '#FFB3B4' : '#BFF4FF', gainColor: hot ? '#FFC2C3' : '#BFF4FF',
+          fillColor: hot ? 'rgba(255,59,63,0.18)' : 'rgba(92,225,255,0.14)',
+          scrBorder: hot ? 'rgba(255,59,63,0.4)' : 'rgba(92,225,255,0.22)',
+          aria: b.name + ' band ' + (type === 'bell' ? 'bell' : 'shelf') + ' at ' + b.value + ', ' + sign + Math.abs(g).toFixed(1) + ' dB, Q ' + b.q + ', drag handles to change width'
+        };
+      });
+      return { pods, hasLabel: !!r.ch, ch: r.ch, chName: r.chName, badgeTop: cy - 42, meterTop: cy - 68, meter: r.meter, dials, knobs: [] };
+    });
+    const win = (() => {
+      const r0 = rowDefs[0];
+      const cy = r0.top + maxS / 2;
+      const left = 40;
+      const top = 252;
+      const w = 1196;
+      const h = 76;
+      const iw = w - 10;
+      const ih = h - 10;
+      const off = left + 5;
+      const base = 34;
+      const amp = 22;
+      const types = bandDefs.map((b, i) => (i === 0 ? 'low' : (i === bandDefs.length - 1 ? 'high' : 'bell')));
+      const cxs = centersX.map((x) => x - off);
+      const edges = [0];
+      for (let i = 0; i < cxs.length - 1; i++) edges.push((cxs[i] + cxs[i + 1]) / 2);
+      edges.push(iw);
+      const P = (arr) => 'M' + arr.map((p) => p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' L');
+      let curves = '';
+      let hotCurves = '';
+      let fills = '';
+      let hotFills = '';
+      let widthBars = '';
+      let dividers = '';
+      let baseline = '';
+      const handles = [];
+      const icons = { bell: 'M1 8 C4 8 4.5 1 6.5 1 C8.5 1 9 8 12 8', low: 'M1 2 L4 2 C6 2 7 8 9 8 L12 8', high: 'M1 8 L4 8 C6 8 7 2 9 2 L12 2' };
+      const zones = bandDefs.map((b, i) => {
+        const hot = r0.gains[i] > redline;
+        const qn = parseFloat(b.q);
+        const x0 = edges[i] + 4;
+        const x1 = edges[i + 1] - 4;
+        const c = cxs[i];
+        const sigma = 30 / qn;
+        const fn = (x) => {
+          if (types[i] === 'bell') return Math.exp(-Math.pow((x - c) / sigma, 2));
+          if (types[i] === 'low') return 1 / (1 + Math.exp((x - c) / (9 / qn)));
+          return 1 / (1 + Math.exp(-(x - c) / (9 / qn)));
+        };
+        const pts = [];
+        for (let x = x0; x <= x1; x += 2) pts.push([x, base - fn(x) * amp]);
+        const cv = P(pts);
+        const fl = cv + ' L' + x1.toFixed(1) + ' ' + base + ' L' + x0.toFixed(1) + ' ' + base + ' Z';
+        if (hot) { hotCurves += cv + ' '; hotFills += fl + ' '; } else { curves += cv + ' '; fills += fl + ' '; }
+        baseline += 'M' + x0.toFixed(1) + ' ' + base + ' L' + x1.toFixed(1) + ' ' + base + ' ';
+        const hc = hot ? '#FFB3B4' : '#BFF4FF';
+        const glow = hot ? 'rgba(255,59,63,0.9)' : 'rgba(92,225,255,0.9)';
+        if (types[i] === 'bell') {
+          const dx = 0.589 * sigma;
+          const hy = base - 0.707 * amp;
+          handles.push({ x: (c - dx).toFixed(1), y: hy.toFixed(1), c: hc, glow }, { x: (c + dx).toFixed(1), y: hy.toFixed(1), c: hc, glow });
+          widthBars += 'M' + (c - dx).toFixed(1) + ' ' + hy.toFixed(1) + ' L' + (c + dx).toFixed(1) + ' ' + hy.toFixed(1) + ' ';
+        } else {
+          handles.push({ x: c.toFixed(1), y: (base - amp / 2).toFixed(1), c: hc, glow });
+        }
+        if (i > 0) dividers += 'M' + edges[i].toFixed(1) + ' 6 L' + edges[i].toFixed(1) + ' ' + (ih - 6) + ' ';
+        return {
+          x: edges[i].toFixed(1), w: (edges[i + 1] - edges[i]).toFixed(1),
+          tint: hot ? 'rgba(255,59,63,0.06)' : (i % 2 === 0 ? 'rgba(115,131,147,0.06)' : 'rgba(92,225,255,0.03)'),
+          q: b.q, qColor: hot ? '#FFD3D4' : '#E8FBFF', shape: types[i] === 'bell' ? 'BELL' : 'SHELF', icon: icons[types[i]],
+          chipBorder: hot ? 'rgba(255,59,63,0.55)' : 'rgba(160,220,240,0.35)'
+        };
+      });
+      const glyph = (i, gx, gy, gw, gh) => {
+        const t = types[i];
+        const q = parseFloat(bandDefs[i].q);
+        const pts = [];
+        for (let k = 0; k <= 24; k++) {
+          const u = k / 24;
+          let v;
+          if (t === 'bell') v = Math.exp(-Math.pow((u - 0.5) / (0.22 / q), 2));
+          else if (t === 'low') v = 1 / (1 + Math.exp((u - 0.5) / (0.08 / q)));
+          else v = 1 / (1 + Math.exp(-(u - 0.5) / (0.08 / q)));
+          pts.push((gx + u * gw).toFixed(1) + ' ' + (gy + gh - v * gh).toFixed(1));
+        }
+        return 'M' + pts.join(' L') + ' ';
+      };
+      const ai = 5;
+      let icons2 = '';
+      let hotIcons2 = '';
+      const labels2 = [];
+      bandDefs.forEach((b, i) => {
+        if (i === ai) return;
+        const hotB = r0.gains[i] > redline;
+        const gph = glyph(i, cxs[i] - 42, 20, 44, 26);
+        if (hotB) hotIcons2 += gph; else icons2 += gph;
+        labels2.push({ x: cxs[i] + 12, q: b.q, color: hotB ? '#FFC2C3' : '#E8FBFF' });
+      });
+      const aHot = r0.gains[ai] > redline;
+      const ac = cxs[ai];
+      const sig = 30 / parseFloat(bandDefs[ai].q);
+      const ax0 = edges[ai] + 6;
+      const ax1 = edges[ai + 1] - 6;
+      const apts = [];
+      for (let x = ax0; x <= ax1; x += 2) apts.push([x, 40 - 24 * Math.exp(-Math.pow((x - ac) / sig, 2))]);
+      const acurve = 'M' + apts.map((pp) => pp[0].toFixed(1) + ' ' + pp[1].toFixed(1)).join(' L');
+      const adx = 0.589 * sig;
+      const ahy = 40 - 24 * 0.707;
+      const active = {
+        x: edges[ai] + 3, w: edges[ai + 1] - edges[ai] - 6, q: bandDefs[ai].q, shape: 'BELL',
+        curve: acurve, fill: acurve + ' L' + ax1.toFixed(1) + ' 40 L' + ax0.toFixed(1) + ' 40 Z',
+        bar: 'M' + (ac - adx).toFixed(1) + ' ' + ahy.toFixed(1) + ' L' + (ac + adx).toFixed(1) + ' ' + ahy.toFixed(1),
+        handles: [ { x: (ac - adx).toFixed(1), y: ahy.toFixed(1) }, { x: (ac + adx).toFixed(1), y: ahy.toFixed(1) } ],
+        textX: edges[ai] + 12, chipX: edges[ai + 1] - 10,
+        color: aHot ? '#FF5A5D' : '#5CE1FF', glow: aHot ? 'rgba(255,59,63,0.9)' : 'rgba(92,225,255,0.9)',
+        fillColor: aHot ? 'rgba(255,59,63,0.18)' : 'rgba(92,225,255,0.16)', handle: aHot ? '#FFB3B4' : '#BFF4FF',
+        border: aHot ? 'rgba(255,59,63,0.5)' : 'rgba(92,225,255,0.5)', bg: aHot ? 'rgba(255,59,63,0.07)' : 'rgba(92,225,255,0.06)',
+        halo: aHot ? 'rgba(255,59,63,0.25)' : 'rgba(92,225,255,0.2)', text: aHot ? '#FFC2C3' : '#E8FBFF'
+      };
+      let stems = '';
+      let hotStems = '';
+      bandDefs.forEach((b, i) => {
+        const dialBottom = cy + dialOffsets[i] + sizes[i] / 2 + 3;
+        const seg = 'M' + centersX[i] + ' ' + dialBottom + ' L' + centersX[i] + ' ' + top + ' ';
+        if (r0.gains[i] > redline) hotStems += seg; else stems += seg;
+      });
+      return { icons: icons2 || 'M0 0', hotIcons: hotIcons2 || 'M0 0', labels: labels2, active, left, top, w, h, iw, ih, vb: '0 0 ' + iw + ' ' + ih, zones, handles, widthBars: widthBars || 'M0 0', dividers, baseline, curves: curves || 'M0 0', hotCurves: hotCurves || 'M0 0', fills: fills || 'M0 0', hotFills: hotFills || 'M0 0', stems: stems || 'M0 0', hotStems: hotStems || 'M0 0' };
+    })();
+    const lvl = (db) => {
+      const pts = [[0, 1], [-6, 0.85], [-12, 0.7], [-24, 0.45], [-48, 0.1]];
+      for (let k = 0; k < pts.length - 1; k++) {
+        const a0 = pts[k];
+        const a1 = pts[k + 1];
+        if (db <= a0[0] && db >= a1[0]) return a1[1] + (a0[1] - a1[1]) * (db - a1[0]) / (a0[0] - a1[0]);
+      }
+      return 0.05;
+    };
+    const pc = (db) => (lvl(db) * 100).toFixed(1);
+    const inBars = [ { pct: pc(-8.4), peak: pc(-4.1), peakColor: '#E8FBFF' }, { pct: pc(-8.9), peak: pc(-4.6), peakColor: '#E8FBFF' } ];
+    const outBars = [ { pct: pc(-6.2), peak: pc(-1.2), peakColor: '#E8FBFF' }, { pct: pc(-5.8), peak: pc(-0.9), peakColor: '#FF3B3F' } ];
+    const outScale = [[0, '0'], [-6, '−6'], [-12, '−12'], [-24, '−24'], [-48, '−48']].map((q) => ({ y: (4 + 84 - lvl(q[0]) * 84).toFixed(1), t: q[1] }));
+    const lufsRows = [
+      { label: 'MOMENTARY', value: '−11.2', color: '#E8FBFF' },
+      { label: 'SHORT-TERM', value: '−12.6', color: '#E8FBFF' },
+      { label: 'TRUE PK', value: '−0.9 dBTP', color: '#FFC2C3' }
+    ];
+    const sx = 564 / 816;
+    const sy = 104 / 200;
+    const smartNodes = [[297, 114, '−1.2 dB'], [610, 124, '−2.0 dB']].map((n) => ({
+      x: (n[0] * sx).toFixed(1), y: (n[1] * sy).toFixed(1), lx: (n[0] * sx).toFixed(1), ly: (n[1] * sy + 10).toFixed(1), t: n[2]
+    }));
+    const pOn = { border: 'rgba(92,225,255,0.8)', bg: 'rgba(92,225,255,0.14)', glow: '0 0 10px rgba(92,225,255,0.4)', color: '#E8FBFF' };
+    const pOff = { border: '#393C3E', bg: '#0C0C0D', glow: 'none', color: '#A9ACAF' };
+    const grTicks = (() => { let t = ''; for (let a = -120; a <= 120.01; a += 12) t += this.seg(44, 39, 43, a); return t; })();
+    const grNums = [[-120, '20'], [-60, '10'], [0, '6'], [60, '3'], [120, '0']].map((n) => {
+      const p = this.pt(44, 44, 29, n[0]);
+      return { x: p[0].toFixed(1), y: p[1].toFixed(1), t: n[1] };
+    });
+    const pillOn = { border: '#FF3B3F', bg: 'rgba(255,59,63,0.14)', glow: '0 0 10px rgba(255,59,63,0.35)', color: '#FFE1E2', dot: '#FF3B3F', dotGlow: '0 0 6px #FF3B3F' };
+    const pillOff = { border: '#393C3E', bg: '#0C0C0D', glow: 'none', color: '#A9ACAF', dot: '#393C3E', dotGlow: 'none' };
+    const cOn = { color: '#FFE1E2', bg: 'rgba(255,59,63,0.22)', glow: '0 0 8px rgba(255,59,63,0.5)' };
+    const cOff = { color: '#A9ACAF', bg: 'transparent', glow: 'none' };
+    return {
+      paint, rows, smartNodes, win, inBars, outBars, outScale, lufsRows,
+      screws: [ { x: 24, y: 24, r: 38 }, { x: 1312, y: 24, r: -22 }, { x: 15, y: 392, r: 74 }, { x: 1321, y: 392, r: 12 }, { x: 24, y: 614, r: -55 }, { x: 1312, y: 614, r: 61 } ],
+      inputKnobs: [ { label: 'TRIM', value: '+1.5 dB', rot: 20 }, { label: 'HPF', value: '30 Hz', rot: -100 } ],
+      amount: { track: this.arc(35, 31, -135, 135), arc: this.arc(35, 31, -135, -135 + 0.3 * 270) },
+      smartPills: [ { t: 'MAX ±3 dB', ...pOn }, { t: 'CUT ONLY', ...pOn }, { t: 'FREEZE', ...pOff }, { t: 'Δ LISTEN', ...pOff } ],
+      charPills: [ { t: 'TAPE', ...cOff }, { t: 'TUBE', ...cOn }, { t: 'IRON', ...cOff } ],
+      gr: { ticks: grTicks, redArc: this.arc(44, 41, -120, -60), nums: grNums, rot: 24 },
+      compKnobs: [
+        { label: 'THRESH', value: '−6 dB', rot: -30, vc: '#D7DADD' },
+        { label: 'RATIO', value: '2:1', rot: -60, vc: '#D7DADD' },
+        { label: 'ATTACK', value: 'AUTO', rot: 0, vc: '#FFC2C3' },
+        { label: 'RELEASE', value: 'AUTO', rot: 0, vc: '#FFC2C3' },
+        { label: 'MAKEUP', value: '+1.5 dB', rot: 20, vc: '#D7DADD' }
+      ],
+      compPills: [ { t: 'AUTO A/R', ...pillOn }, { t: 'SMART', ...pillOn }, { t: 'SC HPF', ...pillOff }, { t: 'LINK', ...pillOn } ],
+      outMeters: [ { pct: 74 }, { pct: 70 } ]
+    };
+  }
+}
+</script>
+</body>
+</html>

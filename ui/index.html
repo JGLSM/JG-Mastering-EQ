@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JG Mastering EQ</title>
+<style>
+@font-face { font-family: Archivo; src: url(fonts/Archivo-latin.woff2) format("woff2"); font-weight: 100 900; font-stretch: 62% 125%; }
+@font-face { font-family: Michroma; src: url(fonts/Michroma-latin.woff2) format("woff2"); }
+html, body { margin: 0; height: 100%; overflow: hidden; background: #0A0A0B; }
+body { -webkit-user-select: none; user-select: none; cursor: default; }
+#root { position: absolute; left: 0; top: 0; width: 1360px; height: 662px; transform-origin: 0 0; }
+.ctl { cursor: ns-resize; }
+.badge, [data-toggle], [data-set], [data-cycle] { cursor: pointer; }
+button { outline: none; }
+[data-ctl$="_freq"] * { pointer-events: none; }
+[data-ctl$="_freq"] [data-pe] { pointer-events: auto; }
+body.dragging, body.dragging * { cursor: ns-resize !important; }
+</style>
+<script src="app.js" charset="utf-8"></script>
+</head>
+<body>
+<div id="root"></div>
+<template id="tpl">
+<div style="width: 1360px; height: 662px; position: relative; background: #0A0A0B; font-family: Archivo, sans-serif; color: #F2F3F4; overflow: hidden">
+  <div style="position: absolute; left: 12px; top: 12px; width: 1336px; height: 638px; border-radius: 40px; background: {{paint}}; box-shadow: 0 34px 60px rgba(0,0,0,0.85), 0 8px 16px rgba(0,0,0,0.6), inset 0 2px 1px rgba(255,255,255,0.4), inset 0 -4px 10px rgba(0,0,0,0.55); overflow: hidden">
+    <svg width="1336" height="638" viewBox="0 0 1336 638" aria-hidden="true" style="position: absolute; left: 0; top: 0; mix-blend-mode: screen; opacity: 0.44">
+      <filter id="jgFlake" x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="1.15" numOctaves="1" seed="11"/>
+        <feColorMatrix type="matrix" values="0 0 0 0 0.86  0 0 0 0 0.80  0 0 0 0 1  0 0 0 14 -10.1"/>
+      </filter>
+      <filter id="jgFlake2" x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="1" seed="3"/>
+        <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 0.72  0 0 0 0 0.95  0 0 0 18 -14.6"/>
+      </filter>
+      <rect width="1336" height="638" filter="url(#jgFlake)"/>
+      <rect width="1336" height="638" filter="url(#jgFlake2)"/>
+    </svg>
+    <div style="position: absolute; left: 0; top: 0; width: 1336px; height: 638px; background: radial-gradient(ellipse 70% 90% at 18% 0%, rgba(198,212,227,0.20) 0%, transparent 60%), radial-gradient(ellipse 60% 80% at 90% 100%, rgba(106,130,154,0.22) 0%, transparent 65%); mix-blend-mode: soft-light"></div>
+    <div style="position: absolute; left: 0; top: 0; width: 1336px; height: 638px; background: linear-gradient(118deg, transparent 0%, transparent 18%, rgba(255,255,255,0.10) 24%, rgba(255,255,255,0.02) 31%, transparent 36%, transparent 100%)"></div>
+    <div style="position: absolute; left: 0; top: 0; width: 1336px; height: 200px; background: radial-gradient(ellipse 55% 100% at 30% 0%, rgba(255,255,255,0.10) 0%, transparent 70%)"></div>
+
+    <div style="position: absolute; left: 348px; top: 18px; width: 640px; height: 26px; border-radius: 13px; background: linear-gradient(180deg, #050606 0%, #151616 100%); box-shadow: inset 0 2px 4px rgba(0,0,0,0.9), 0 1px 0 rgba(255,255,255,0.3); display: flex; align-items: center; gap: 22px; padding: 0 22px; box-sizing: border-box">
+      <div style="flex-grow: 1; height: 4px; border-radius: 2px; background: #FF3B3F; box-shadow: 0 0 6px rgba(255,40,50,0.95), 0 0 16px rgba(255,30,40,0.6)"></div>
+      <span style="font-stretch: 125%; font-weight: 600; font-size: 12px; letter-spacing: 0.55em; color: #DADDE0">LOVE SCIENCE</span>
+      <div style="flex-grow: 1; height: 4px; border-radius: 2px; background: #FF3B3F; box-shadow: 0 0 6px rgba(255,40,50,0.95), 0 0 16px rgba(255,30,40,0.6)"></div>
+    </div>
+
+    <div style="position: absolute; left: 30px; top: 58px; width: 230px; height: 150px; box-sizing: border-box; border-radius: 22px; filter: {{inDim}}; background: linear-gradient(180deg, #212325 0%, #111214 100%); box-shadow: inset 0 4px 12px rgba(0,0,0,0.8), 0 1px 0 rgba(255,255,255,0.3); padding: 10px 14px; display: flex; flex-direction: column; gap: 10px">
+      <div style="display: flex; align-items: center; justify-content: space-between">
+        <div style="display: flex; align-items: center; gap: 8px">
+          <button data-toggle="in_bypass" data-invert="1" title="Click to bypass the input stage" aria-label="Input stage on/off" class="badge" style="width: 18px; height: 18px; padding: 0; border-radius: 50%; border: 1px solid {{badge1.border}}; background: transparent; display: flex; align-items: center; justify-content: center; font: 700 11px Archivo, sans-serif; color: {{badge1.color}}; box-sizing: border-box; box-shadow: {{badge1.glow}}">1</button>
+          <span style="font-stretch: 125%; font-weight: 700; font-size: 11px; letter-spacing: 0.3em; color: #C4C7CC; text-shadow: 0 -1px 0 rgba(0,0,0,0.95), 0 1px 0 rgba(255,255,255,0.16)">INPUT</span>
+        </div>
+        <button data-toggle="in_lift" aria-label="Lift" style="height: 24px; padding: 0 11px; border-radius: 12px; border: 1px solid {{lift.border}}; background: {{lift.bg}}; box-shadow: {{lift.glow}}; color: {{lift.color}}; font: 700 11px Archivo, sans-serif; font-stretch: 112%; letter-spacing: 0.22em; display: flex; align-items: center; gap: 7px">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: {{lift.dot}}; box-shadow: {{lift.dotGlow}}"></span>LIFT
+        </button>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; height: 96px">
+        <div data-ctl="in_drive" class="ctl" title="Drive (drag, double-click to reset)" style="display: flex; flex-direction: column; align-items: center; gap: 3px; width: 46px">
+          <div style="width: 44px; height: 44px; border-radius: 50%; background: repeating-conic-gradient(from 0deg, #A3A8AD 0deg 3deg, #45494E 3deg 6deg); box-shadow: 0 6px 10px rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center">
+            <div style="width: 33px; height: 33px; border-radius: 50%; position: relative; background: radial-gradient(circle at 40% 30%, #2D2E2E 0%, #0C0C0D 75%); box-shadow: inset 0 1px 1px rgba(255,255,255,0.22)">
+              <div style="position: absolute; left: 0; top: 0; width: 33px; height: 33px; transform: rotate({{drive.rot}}deg)">
+                <div style="position: absolute; left: 15px; top: 3px; width: 3px; height: 9px; border-radius: 2px; background: #F2F3F4"></div>
+              </div>
+            </div>
+          </div>
+          <span style="font-stretch: 112%; font-weight: 600; font-size: 11px; letter-spacing: 0.12em; color: #A9ACAF; text-shadow: 0 -1px 0 rgba(0,0,0,0.95), 0 1px 0 rgba(255,255,255,0.16)">DRIVE</span>
+          <span style="font-stretch: 90%; font-weight: 600; font-size: 11px; color: #F2F3F4; white-space: nowrap">{{drive.text}}</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px; align-items: stretch; width: 56px; padding-bottom: 4px">
+          <span style="font-stretch: 90%; font-weight: 600; font-size: 11px; letter-spacing: 0.06em; color: #8F9294; text-align: center; text-shadow: 0 -1px 0 rgba(0,0,0,0.95), 0 1px 0 rgba(255,255,255,0.16)">STAGE</span>
+          <button data-set="in_bypass" data-value="0" style="height: 24px; border-radius: 12px; border: 1px solid {{inOn.border}}; background: {{inOn.bg}}; box-shadow: {{inOn.glow}}; color: {{inOn.color}}; font: 600 11px Archivo, sans-serif; letter-spacing: 0.08em; display: flex; align-items: center; justify-content: center; gap: 5px; padding: 0"><span style="width: 5px; height: 5px; border-radius: 50%; background: {{inOn.dot}}; box-shadow: {{inOn.dotGlow}}"></span>ON</button>
+          <button data-set="in_bypass" data-value="1" style="height: 24px; border-radius: 12px; border: 1px solid {{inOff.border}}; background: {{inOff.bg}}; box-shadow: {{inOff.glow}}; color: {{inOff.color}}; font: 600 11px Archivo, sans-serif; letter-spacing: 0.06em; display: flex; align-items: center; justify-content: center; gap: 5px; padding: 0"><span style="width: 5px; height: 5px; border-radius: 50%; background: {{inOff.dot}}; box-shadow: {{inOff.dotGlow}}"></span>BYPASS</button>
+        </div>
+        <div style="width: 1px; height: 88px; align-self: center; background: linear-gradient(180deg, transparent, rgba(183,194,205,0.45), transparent)"></div>
+        <div style="width: 46px; height: 86px; box-sizing: border-box; opacity: {{lift.boxOpacity}}; border-radius: 10px; border: 1px solid rgba(255,59,63,0.55); background: #0A0708; box-shadow: inset 0 2px 5px rgba(0,0,0,0.9), 0 0 10px rgba(255,59,63,0.18); padding: 6px 2px; display: flex; flex-direction: column; justify-content: space-between; align-items: center">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 1px">
+            <svg width="24" height="20" viewBox="0 0 26 22" role="img" aria-label="Gentle compression curve">
+              <path d="M2 20 L13 9 L24 4.5" fill="none" stroke="#FF6B6E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 2px rgba(255,59,63,0.9))"/>
+              <path d="M13 9 L22 0" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1" stroke-dasharray="2 2"/>
+            </svg>
+            <span style="font-stretch: 90%; font-weight: 700; font-size: 11px; color: #FFD3D4">1.3:1</span>
+          </div>
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 1px">
+            <svg width="24" height="13" viewBox="0 0 26 14" role="img" aria-label="Small high shelf lift">
+              <path d="M2 10 L12 10 C16 10 17 7 21 7 L24 7" fill="none" stroke="#FF6B6E" stroke-width="1.8" stroke-linecap="round" style="filter: drop-shadow(0 0 2px rgba(255,59,63,0.9))"/>
+            </svg>
+            <span style="font-stretch: 90%; font-weight: 700; font-size: 11px; color: #FFD3D4">+0.1</span>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; width: 40px">
+          <div style="display: flex; gap: 2px">
+            <span style="width: 19px; text-align: center; font-stretch: 75%; font-weight: 700; font-size: 11px; line-height: 1; color: {{inPk.0.color}}">{{inPk.0.t}}</span>
+            <span style="width: 19px; text-align: center; font-stretch: 75%; font-weight: 700; font-size: 11px; line-height: 1; color: {{inPk.1.color}}">{{inPk.1.t}}</span>
+          </div>
+          <div style="display: flex; gap: 4px; height: 64px; padding: 4px 5px; box-sizing: border-box; border-radius: 6px; background: #050606; box-shadow: inset 0 2px 5px rgba(0,0,0,0.95)">
+            <sc-for list="{{inBars}}" as="b" hint-placeholder-count="2">
+              <div style="position: relative; width: 9px; height: 56px; border-radius: 2px; background: repeating-linear-gradient(to top, #1B1C1E 0px, #1B1C1E 3px, #050606 3px, #050606 4px); overflow: hidden">
+                <div style="position: absolute; left: 0; bottom: 0; width: 9px; height: {{b.pct}}%; background: linear-gradient(to top, #F2F3F4 0px, #F2F3F4 42px, #FFB347 49px, #FF3B3F 56px); background-size: 9px 56px; background-position: bottom; -webkit-mask-image: repeating-linear-gradient(to top, #000 0px, #000 3px, transparent 3px, transparent 4px); mask-image: repeating-linear-gradient(to top, #000 0px, #000 3px, transparent 3px, transparent 4px)"></div>
+                <div style="position: absolute; left: 0; bottom: {{b.peak}}%; width: 9px; height: 2px; background: {{b.peakColor}}"></div>
+              </div>
+            </sc-for>
+          </div>
+          <span style="font-weight: 600; font-size: 11px; line-height: 1; color: #8F9294; white-space: nowrap; text-shadow: 0 -1px 0 rgba(0,0,0,0.95), 0 1px 0 rgba(255,255,255,0.16)">IN dBFS</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="position: absolute; left: 1076px; top: 58px; width: 230px; height: 150px; box-sizing: border-box; border-radius: 22px; background: linear-gradient(180deg, #212325 0%, #111214 100%); box-shadow: inset 0 4px 12px rgba(0,0,0,0.8), 0 1px 0 rgba(255,255,255,0.3); padding: 10px 14px; display: flex; flex-direction: column; gap: 10px">
+      <div style="display: flex; align-items: center; justify-content: space-between; height: 24px">
+        <span style="font-stretch: 125%; font-weight: 700; font-size: 11px; letter-spacing: 0.3em; color: #C4C7CC; text-shadow: 0 -1px 0 rgba(0,0,0,0.95), 0 1px 0 rgba(255,255,255,0.16)">OUTPUT</span>
+        <span style="height: 22px; box-sizing: border-box; padding: 0 9px; border-radius: 11px; border: 1px solid rgba(92,225,255,0.4); background: rgba(92,225,255,0.06); display: flex; align-items: center; font-weight: 600; font-size: 11px; color: #BFF4FF; white-space: nowrap; cursor: pointer" data-cycle="out_target" title="Loudness target (click to change)">{{target}} &#x25BE;</span>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; height: 96px">
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; width: 40px">
+          <div style="display: flex; gap: 2px">
+            <span style="width: 19px; text-align: center; font-stretch: 75%; font-weight: 700; font-size: 11px; line-height: 1; color: {{outPk.0.color}}">{{outPk.0.t}}</span>
+            <span style="width: 19px; text-align: center; font-stretch: 75%; font-weight: 700; font-size: 11px; line-height: 1; color: {{outPk.1.color}}">{{outPk.1.t}}</span>
+          </div>
+          <div style="display: flex; gap: 4px; height: 64px; padding: 4px 5px; box-sizing: border-box; border-radius: 6px; background: #050606; box-shadow: inset 0 2px 5px rgba(0,0,0,0.95)">
+            <sc-for list="{{outBars}}" as="b" hint-placeholder-count="2">
+              <div style="position: relative; width: 9px; height: 56px; border-radius: 2px; background: repeating-linear-gradient(to top, #1B1C1E 0px, #1B1C1E 3px, #050606 3px, #050606 4px); overflow: hidden">
+                <div style="position: absolute; left: 0; bottom: 0; width: 9px; height: {{b.pct}}%; background: linear-gradient(to top, #F2F3F4 0px, #F2F3F4 42px, #FFB347 49px, #FF3B3F 56px); background-size: 9px 56px; background-position: bottom; -webkit-mask-image: repeating-linear-gradient(to top, #000 0px, #000 3px, transparent 3px, transparent 4px); mask-image: repeating-linear-gradient(to top, #000 0px, #000 3px, transparent 3px, transparent 4px)"></div>
+                <div style="position: absolute; left: 0; bottom: {{b.peak}}%; width: 9px; height: 2px; background: {{b.peakColor}}"></div>
+              </div>
+            </sc-for>
+          </div>
+          <span style="font-weight: 600; font-size: 11px; line-height: 1; color: #8F9294; white-space: nowrap; text-shadow: 0 -1px 0 rgba(0,0,0,0.95), 0 1px 0 rgba(255,255,255,0.16)">OUT dBFS</span>
+        </div>
+        <div style="width: 1px; height: 88px; align-self: center; background: linear-gradient(180deg, transparent, rgba(183,194,205,0.45), transparent)"></div>
+        <div style="width: 126px; display: flex; flex-direction: column; gap: 5px">
+          <div style="height: 48px; box-sizing: border-box; border-radius: 10px; background: linear-gradient(180deg, #0E1012 0%, #171B1F 100%); box-shadow: inset 0 3px 8px rgba(0,0,0,0.95), inset 0 0 0 1px rgba(92,225,255,0.22); padding: 5px 9px; display: flex; flex-direction: column; justify-content: space-between">
+            <span style="font-stretch: 100%; font-weight: 600; font-size: 11px; line-height: 1; letter-spacing: 0.1em; color: #8F9294">INTEGRATED</span>
+            <div style="display: flex; align-items: baseline; gap: 5px">
+              <span style="font-stretch: 90%; font-weight: 700; font-size: 22px; line-height: 1; font-variant-numeric: tabular-nums; color: #E8FBFF; text-shadow: 0 0 10px rgba(92,225,255,0.6)">{{lufsInt}}</span>
+              <span style="font-weight: 600; font-size: 11px; color: #BFF4FF">LUFS</span>
+            </div>
+          </div>
+          <sc-for list="{{lufsRows}}" as="lr" hint-placeholder-count="3">
+            <div style="display: flex; justify-content: space-between; align-items: baseline">
+              <span style="font-stretch: 90%; font-weight: 600; font-size: 11px; line-height: 1; letter-spacing: 0.06em; color: #A9ACAF">{{lr.label}}</span>
+              <span style="font-stretch: 85%; font-weight: 700; font-size: 11px; line-height: 1; font-variant-numeric: tabular-nums; color: {{lr.color}}">{{lr.value}}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <div style="position: absolute; left: 274px; top: 58px; width: 788px; height: 150px; box-sizing: border-box; border-radius: 22px; padding: 2px; background: linear-gradient(180deg, #6A6E76 0%, #34363C 40%, #1C1D21 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.3)">
+      <div style="position: relative; width: 784px; height: 146px; border-radius: 20px; overflow: hidden; filter: {{seqDim}}; background: radial-gradient(ellipse 60% 70% at 40% 30%, #252B32 0%, #101215 75%); box-shadow: inset 0 4px 12px rgba(0,0,0,0.95)">
+        <div style="position: absolute; left: 14px; top: 8px; display: flex; align-items: center; gap: 8px; white-space: nowrap">
+          <button data-toggle="seq_bypass" data-invert="1" title="Click to bypass the Smart EQ" aria-label="Smart EQ on/off" class="badge" style="width: 18px; height: 18px; padding: 0; border-radius: 50%; border: 1px solid {{badge2.border}}; background: transparent; display: flex; align-items: center; justify-content: center; font: 700 11px Archivo, sans-serif; color: {{badge2.color}}; box-sizing: border-box; box-shadow: {{badge2.glow}}">2</button>
+          <span style="font-stretch: 125%; font-weight: 700; font-size: 11px; letter-spacing: 0.3em; color: #5CE1FF; text-shadow: 0 0 8px rgba(92,225,255,0.7)">SMART EQ</span>
+          <span style="font-weight: 500; font-size: 11px; letter-spacing: 0.08em; color: #A9ACAF">&#xB7; realtime &#xB7; subtle</span>
+        </div>
+
+        <div style="position: absolute; left: 14px; top: 32px; width: 564px; height: 104px; border-radius: 14px; overflow: hidden; background: linear-gradient(180deg, #0D0E10 0%, #15191D 60%, #1D2228 100%); box-shadow: inset 0 0 0 1px rgba(92,225,255,0.18), inset 0 4px 12px rgba(0,0,0,0.9)">
+          <div style="position: absolute; left: 0; right: 0; top: 46px; height: 40px; background: radial-gradient(ellipse 60% 100% at 50% 100%, rgba(144,172,201,0.32) 0%, transparent 70%)"></div>
+          <div style="position: absolute; left: -140px; width: 844px; bottom: -14px; height: 80px; background-image: linear-gradient(rgba(92,225,255,0.22) 1px, transparent 1px), linear-gradient(90deg, rgba(92,225,255,0.22) 1px, transparent 1px); background-size: 36px 12px; transform: perspective(160px) rotateX(64deg); transform-origin: 50% 100%; -webkit-mask-image: linear-gradient(to top, #000 30%, transparent 100%); mask-image: linear-gradient(to top, #000 30%, transparent 100%)"></div>
+          <svg width="564" height="104" viewBox="0 0 816 200" preserveAspectRatio="none" role="img" aria-label="Smart EQ display: two gentle cuts, about 1 dB at 250 Hz and 2 dB at 3.5 kHz, inside a plus or minus 3 dB limit" style="position: absolute; left: 0; top: 0">
+            <defs>
+              <linearGradient id="specFill2" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#FF4FD8" stop-opacity="0.38"/>
+                <stop offset="100%" stop-color="#FF4FD8" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <line x1="0" y1="64" x2="816" y2="64" stroke="rgba(92,225,255,0.25)" stroke-width="1" stroke-dasharray="4 5" vector-effect="non-scaling-stroke"/>
+            <line x1="0" y1="136" x2="816" y2="136" stroke="rgba(92,225,255,0.25)" stroke-width="1" stroke-dasharray="4 5" vector-effect="non-scaling-stroke"/>
+            <line x1="0" y1="100" x2="816" y2="100" stroke="rgba(242,243,244,0.35)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+            <path d="M0 200 L0 150 C30 124 60 116 100 122 C140 128 170 116 210 124 C260 134 300 128 340 136 C380 142 420 134 460 140 C520 150 560 140 610 136 C660 146 700 156 740 166 C780 176 800 182 816 188 L816 200 Z" fill="url(#specFill2)"/>
+            <path d="M0 150 C30 124 60 116 100 122 C140 128 170 116 210 124 C260 134 300 128 340 136 C380 142 420 134 460 140 C520 150 560 140 610 136 C660 146 700 156 740 166 C780 176 800 182 816 188" fill="none" stroke="#FF7BE3" stroke-width="1.4" vector-effect="non-scaling-stroke" style="filter: drop-shadow(0 0 4px rgba(255,79,216,0.8))"/>
+            <path d="M200 100 C240 100 260 114 297 114 C334 114 354 100 400 100 Z" fill="rgba(92,225,255,0.26)"/>
+            <path d="M540 100 C570 100 590 124 610 124 C630 124 650 100 690 100 Z" fill="rgba(92,225,255,0.26)"/>
+            <path d="M0 100 L200 100 C240 100 260 114 297 114 C334 114 354 100 400 100 L540 100 C570 100 590 124 610 124 C630 124 650 100 690 100 L816 100" fill="none" stroke="#5CE1FF" stroke-width="2.4" vector-effect="non-scaling-stroke" style="filter: drop-shadow(0 0 4px rgba(92,225,255,0.95)) drop-shadow(0 0 10px rgba(92,225,255,0.5))"/>
+          </svg>
+          <sc-for list="{{smartNodes}}" as="b" hint-placeholder-count="2">
+            <div style="position: absolute; left: {{b.x}}px; top: {{b.y}}px; width: 14px; height: 14px; transform: translate(-50%, -50%); border-radius: 50%; border: 1.5px solid #5CE1FF; background: rgba(92,225,255,0.3); box-shadow: 0 0 8px rgba(92,225,255,0.95), 0 0 18px rgba(92,225,255,0.5); box-sizing: border-box"></div>
+            <span style="position: absolute; left: {{b.lx}}px; top: {{b.ly}}px; transform: translateX(-50%); font-weight: 600; font-size: 11px; color: #BFF4FF; text-shadow: 0 0 6px rgba(92,225,255,0.8)">{{b.t}}</span>
+          </sc-for>
+          <span style="position: absolute; right: 10px; top: 25px; font-weight: 600; font-size: 11px; color: rgba(160,220,240,0.8)">+3</span>
+          <span style="position: absolute; right: 10px; top: 63px; font-weight: 600; font-size: 11px; color: rgba(160,220,240,0.8)">&#x2212;3</span>
+          <div style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; background: repeating-linear-gradient(180deg, rgba(0,0,0,0.18) 0px, rgba(0,0,0,0.18) 1px, transparent 1px, transparent 3px)"></div>
+          <div style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; background: linear-gradient(172deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.02) 28%, transparent 40%)"></div>
+        </div>
+
+        <div style="position: absolute; left: 590px; top: 12px; width: 180px; height: 124px; display: flex; gap: 12px; align-items: center">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 4px">
+            <div data-ctl="seq_amount" class="ctl" title="Smart EQ amount (drag, double-click to reset)" style="position: relative; width: 70px; height: 70px">
+              <svg width="70" height="70" viewBox="0 0 70 70" aria-hidden="true" style="position: absolute; left: 0; top: 0">
+                <path d="{{amount.track}}" stroke="#1E2A38" stroke-width="3" stroke-linecap="round" fill="none"/>
+                <path d="{{amount.arc}}" stroke="#5CE1FF" stroke-width="3" stroke-linecap="round" fill="none" style="filter: drop-shadow(0 0 3px rgba(92,225,255,0.95)) drop-shadow(0 0 8px rgba(92,225,255,0.5))"/>
+              </svg>
+              <div style="position: absolute; left: 10px; top: 10px; width: 50px; height: 50px; border-radius: 50%; background: radial-gradient(circle at 40% 30%, #202326 0%, #090A0B 75%); box-shadow: inset 0 1px 1px rgba(255,255,255,0.18), 0 4px 8px rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 13px; color: #E8FBFF; text-shadow: 0 0 6px rgba(92,225,255,0.7)">{{amount.text}}</div>
+            </div>
+            <span style="font-stretch: 112%; font-weight: 600; font-size: 11px; letter-spacing: 0.18em; color: #A9ACAF; text-shadow: 0 -1px 0 rgba(0,0,0,0.95), 0 1px 0 rgba(255,255,255,0.16)">AMOUNT</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 6px; flex-grow: 1">
+            <sc-for list="{{smartPills}}" as="p" hint-placeholder-count="4">
+              <span data-toggle="{{p.id}}" role="button" style="cursor: pointer; height: 22px; box-sizing: border-box; border-radius: 11px; border: 1px solid {{p.border}}; background: {{p.bg}}; box-shadow: {{p.glow}}; display: flex; align-items: center; justify-content: center; font-stretch: 112%; font-weight: 600; font-size: 11px; letter-spacing: 0.12em; color: {{p.color}}">{{p.t}}</span>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="position: absolute; left: 30px; top: 222px; width: 1276px; height: 340px; border-radius: 26px; overflow: hidden; filter: {{peqDim}}; background: radial-gradient(ellipse 60% 55% at 50% 42%, rgba(131,148,165,0.36) 0%, rgba(88,104,120,0.16) 45%, transparent 75%), radial-gradient(ellipse 90% 40% at 50% 110%, rgba(139,160,181,0.22) 0%, transparent 70%), repeating-linear-gradient(45deg, rgba(183,194,205,0.075) 0px, rgba(183,194,205,0.075) 1px, transparent 1px, transparent 6px), repeating-linear-gradient(-45deg, rgba(183,194,205,0.075) 0px, rgba(183,194,205,0.075) 1px, transparent 1px, transparent 6px), repeating-linear-gradient(45deg, rgba(0,0,0,0.22) 0px, rgba(0,0,0,0.22) 3px, transparent 3px, transparent 6px), linear-gradient(180deg, #23282E 0%, #161A1F 55%, #1D2227 100%); box-shadow: inset 0 20px 34px rgba(0,0,0,0.6), inset 0 -10px 24px rgba(0,0,0,0.45), inset 18px 0 30px rgba(0,0,0,0.38), inset -18px 0 30px rgba(0,0,0,0.38), inset 0 0 0 1px rgba(183,194,205,0.16), 0 1px 0 rgba(255,255,255,0.3)">
+      <svg width="1276" height="340" viewBox="0 0 1276 340" aria-hidden="true" style="position: absolute; left: 0; top: 0; mix-blend-mode: overlay; opacity: 0.5">
+        <filter id="jgGrain" x="0" y="0" width="100%" height="100%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="5"/>
+          <feColorMatrix type="matrix" values="0 0 0 0 0.78  0 0 0 0 0.68  0 0 0 0 0.95  0 0 0 1.6 -0.55"/>
+        </filter>
+        <rect width="1276" height="340" filter="url(#jgGrain)"/>
+      </svg>
+      <div style="position: absolute; left: 6%; right: 6%; top: 128px; height: 14px; border-radius: 7px; background: radial-gradient(ellipse 50% 100% at 50% 50%, rgba(184,203,221,0.35) 0%, transparent 70%); filter: blur(6px)"></div>
+      <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(184,203,221,0.55), transparent); box-shadow: 0 0 10px rgba(184,203,221,0.5)"></div>
+      <div style="position: absolute; left: 0; top: 0; right: 0; height: 60px; background: linear-gradient(180deg, rgba(255,255,255,0.05), transparent)"></div>
+      <div style="position: absolute; left: 16px; top: 12px; display: flex; align-items: center; gap: 8px; z-index: 5; white-space: nowrap">
+        <button data-toggle="peq_bypass" data-invert="1" title="Click to bypass the passive EQ" aria-label="Passive EQ on/off" class="badge" style="width: 18px; height: 18px; padding: 0; border-radius: 50%; border: 1px solid {{badge3.border}}; background: transparent; display: flex; align-items: center; justify-content: center; font: 700 11px Archivo, sans-serif; color: {{badge3.color}}; box-sizing: border-box; box-shadow: {{badge3.glow}}">3</button>
+        <span style="font-stretch: 125%; font-weight: 700; font-size: 11px; letter-spacing: 0.3em; color: #C4C7CC; text-shadow: 0 -1px 0 rgba(0,0,0,0.95), 0 1px 0 rgba(255,255,255,0.16)">PASSIVE EQ</span>
+        <span style="width: 14px; height: 4px; border-radius: 2px; margin-left: 10px; background: #FF3B3F; box-shadow: 0 0 6px rgba(255,59,63,0.9)"></span>
+        <span style="font-weight: 600; font-size: 11px; letter-spacing: 0.1em; color: #A9ACAF; text-shadow: 0 -1px 0 rgba(0,0,0,0.95), 0 1px 0 rgba(255,255,255,0.16)">past redline = color</span>
+      </div>
+      <div style="position: absolute; right: 16px; top: 8px; display: flex; align-items: center; gap: 10px; z-index: 5">
+        <span style="font-stretch: 112%; font-weight: 600; font-size: 11px; letter-spacing: 0.2em; color: #A9ACAF; text-shadow: 0 -1px 0 rgba(0,0,0,0.95), 0 1px 0 rgba(255,255,255,0.16)">COLOR</span>
+        <div style="display: flex; padding: 2px; border-radius: 12px; background: #050606; box-shadow: inset 0 1px 3px rgba(0,0,0,0.95), 0 1px 0 rgba(255,255,255,0.08)">
+          <sc-for list="{{charPills}}" as="cp" hint-placeholder-count="3">
+            <span data-set="peq_sat" data-value="{{cp.v}}" role="button" style="cursor: pointer; padding: 3px 10px; border-radius: 10px; font-stretch: 112%; font-weight: 600; font-size: 11px; letter-spacing: 0.1em; color: {{cp.color}}; background: {{cp.bg}}; box-shadow: {{cp.glow}}">{{cp.t}}</span>
+          </sc-for>
+        </div>
+      </div>
+      <sc-for list="{{rows}}" as="row" hint-placeholder-count="1">
+        <sc-if value="{{row.hasLabel}}" hint-placeholder-val="{{ false }}">
+          <div style="position: absolute; left: 24px; top: {{row.badgeTop}}px; width: 72px; height: 84px; box-sizing: border-box; border-radius: 16px; background: linear-gradient(180deg, #1C1C1D 0%, #0A0A0B 100%); border: 1px solid #343637; box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 8px 14px rgba(0,0,0,0.6); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px">
+            <span style="font-family: Michroma, sans-serif; font-size: 30px; line-height: 1; background: linear-gradient(180deg, #FFFFFF 0%, #DADDE2 38%, #8E939A 52%, #E9ECEF 100%); -webkit-background-clip: text; background-clip: text; color: transparent">{{row.ch}}</span>
+            <span style="font-stretch: 112%; font-weight: 600; font-size: 11px; letter-spacing: 0.22em; color: #A9ACAF">{{row.chName}}</span>
+          </div>
+          <div style="position: absolute; left: 968px; top: {{row.meterTop}}px; display: flex; flex-direction: column; align-items: center; gap: 6px">
+            <div style="width: 14px; height: 120px; box-sizing: border-box; padding: 3px; border-radius: 6px; background: #050606; box-shadow: inset 0 2px 5px rgba(0,0,0,0.95), 0 1px 0 rgba(255,255,255,0.08); display: flex; align-items: flex-end">
+              <div style="width: 8px; height: {{row.meter}}%; background: repeating-linear-gradient(180deg, #F2F3F4 0px, #F2F3F4 3px, #050606 3px, #050606 4px); box-shadow: 0 0 5px rgba(242,243,244,0.4)"></div>
+            </div>
+            <span style="font-weight: 600; font-size: 11px; letter-spacing: 0.14em; color: #A9ACAF">OUT</span>
+          </div>
+        </sc-if>
+        <sc-for list="{{row.dials}}" as="d" hint-placeholder-count="7">
+          <div data-ctl="peq_b{{d.n}}_freq" data-band="{{d.i}}" class="ctl" title="{{d.name}} frequency (drag, double-click to reset)" style="position: absolute; left: {{d.left}}px; top: {{d.top}}px; width: {{d.s}}px; height: {{d.s}}px; border-radius: 50%; z-index: {{d.z}}; background: conic-gradient(from 210deg, #4E5358, #D6DADE 12%, #43474C 30%, #B4B9BE 50%, #3C4045 70%, #DCE0E3 86%, #4E5358); box-shadow: 0 0 0 4px #0A0B0D, 0 0 0 5px rgba(183,194,205,0.18), 0 18px 30px rgba(0,0,0,0.85), 0 4px 8px rgba(0,0,0,0.6), 0 0 36px rgba(115,131,147,0.26)">
+            <div style="position: absolute; left: 4px; top: 4px; width: {{d.chamfer}}px; height: {{d.chamfer}}px; border-radius: 50%; background: linear-gradient(180deg, #1F2022 0%, #383A3B 100%); box-shadow: inset 0 2px 3px rgba(0,0,0,0.85)"></div>
+            <div style="position: absolute; left: 8px; top: 8px; width: {{d.f}}px; height: {{d.f}}px; border-radius: 50%; overflow: hidden; background: radial-gradient(circle at 50% 50%, #292C2E 0%, #191B1E 55%, #0F1011 100%); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05)">
+              <div style="position: absolute; left: 0; top: 0; width: {{d.f}}px; height: {{d.f}}px; border-radius: 50%; background: repeating-conic-gradient(from 0deg, rgba(255,255,255,0.028) 0deg 1deg, rgba(0,0,0,0.05) 1deg 2deg); filter: blur(0.4px)"></div>
+              <div style="position: absolute; left: 0; top: 0; width: {{d.f}}px; height: {{d.f}}px; border-radius: 50%; background: conic-gradient(from 0deg, transparent 0deg, transparent 92deg, rgba(218,227,237,0.12) 135deg, transparent 178deg, transparent 268deg, rgba(218,227,237,0.12) 315deg, transparent 358deg)"></div>
+              <div style="position: absolute; left: 0; top: 0; width: {{d.f}}px; height: {{d.f}}px; border-radius: 50%; box-shadow: inset 0 14px 22px rgba(0,0,0,0.9), inset 0 -6px 14px rgba(0,0,0,0.7)"></div>
+              <svg width="{{d.f}}" height="{{d.f}}" viewBox="{{d.vb}}" aria-hidden="true" style="position: absolute; left: 0; top: 0; filter: drop-shadow(0 1px 1.5px rgba(0,0,0,0.9))">
+                <path d="{{d.minor}}" stroke="#E6E7EA" stroke-width="1.1" fill="none"/>
+                <path d="{{d.gArc}}" stroke="{{d.gArcColor}}" stroke-width="2.4" stroke-linecap="round" fill="none" style="filter: {{d.gArcGlow}}"/>
+              </svg>
+              <div style="position: absolute; left: 0; top: 0; width: {{d.f}}px; height: {{d.f}}px; filter: drop-shadow(0 1.6px 0.8px rgba(0,0,0,0.95))">
+                <sc-for list="{{d.idx}}" as="ix" hint-placeholder-count="7">
+                  <div style="position: absolute; left: {{ix.x}}px; top: {{ix.y}}px; width: 4px; height: 12px; box-sizing: border-box; border-radius: 1px; transform: translate(-50%, -50%) rotate({{ix.r}}deg); background: linear-gradient(90deg, #6E737A 0%, #FFFFFF 38%, #DADDE1 50%, #8E939A 62%, #5A5E64 100%); border: 0.5px solid rgba(0,0,0,0.45)"></div>
+                </sc-for>
+              </div>
+              <sc-for list="{{d.nums}}" as="n" hint-placeholder-count="7">
+                <span style="position: absolute; left: {{n.x}}px; top: {{n.y}}px; transform: translate(-50%, -50%); font-family: Michroma, sans-serif; font-weight: 400; font-size: {{d.numSize}}px; line-height: 1; color: #FFFFFF; text-shadow: 0 1px 2px rgba(0,0,0,0.95), 0 0 6px rgba(255,255,255,0.18)">{{n.t}}</span>
+              </sc-for>
+              <span style="position: absolute; left: 0; right: 0; top: {{d.labelTop}}px; text-align: center; font-stretch: 90%; font-weight: 600; font-size: 11px; letter-spacing: 0.08em; color: #A9ACAF; text-shadow: 0 -1px 0 rgba(0,0,0,0.95), 0 1px 0 rgba(255,255,255,0.16)">{{d.name}}</span>
+              <span style="position: absolute; left: 0; right: 0; top: {{d.valueTop}}px; text-align: center; font-stretch: 90%; font-weight: 600; font-size: 12px; color: #F2F3F4; text-shadow: 0 1px 2px rgba(0,0,0,0.9)">{{d.value}}</span>
+              <span style="position: absolute; left: 0; right: 0; top: {{d.gainTop}}px; text-align: center; font-stretch: 85%; font-weight: 600; font-size: 11px; color: {{d.gainColor}}; text-shadow: 0 1px 2px rgba(0,0,0,0.9)">{{d.gainText}}</span>
+              <div style="position: absolute; left: 0; top: 0; width: {{d.f}}px; height: {{d.f}}px; pointer-events: none; filter: drop-shadow(0 6px 5px rgba(0,0,0,0.85))">
+                <div style="position: absolute; left: 0; top: 0; width: {{d.f}}px; height: {{d.f}}px; transform: rotate({{d.rot}}deg)">
+                  <div style="position: absolute; left: {{d.nLeft}}px; top: {{d.nTop}}px; width: 5px; height: {{d.nLen}}px; border-radius: 3px 3px 1px 1px; background: linear-gradient(90deg, #9E0E16 0%, #FF5A5A 50%, #B5121B 100%); box-shadow: 0 0 6px rgba(255,40,40,0.55)"></div>
+                  <div style="position: absolute; left: {{d.skirtLeft}}px; top: {{d.skirtLeft}}px; width: {{d.skirtSize}}px; height: {{d.skirtSize}}px; border-radius: 50%; background: radial-gradient(circle at 40% 30%, #3A1418 0%, #1A0A0D 70%); box-shadow: inset 0 0 0 1.5px #C8121C, inset 0 1px 1px rgba(255,255,255,0.18)"></div>
+                </div>
+              </div>
+              <div style="position: absolute; left: 0; top: 0; width: {{d.f}}px; height: {{d.f}}px; pointer-events: none; filter: drop-shadow(0 8px 7px rgba(0,0,0,0.85))">
+                <div data-ctl="peq_b{{d.n}}_gain" data-pe="1" data-band="{{d.i}}" class="ctl" title="{{d.name}} gain (drag, double-click to reset)" style="position: absolute; left: {{d.knobLeft}}px; top: {{d.knobLeft}}px; width: {{d.knobSize}}px; height: {{d.knobSize}}px; border-radius: 50%; background: repeating-conic-gradient(from 0deg, #BFC4C9 0deg 3deg, #4A4E53 3deg 6deg); box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), inset 0 -2px 3px rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center">
+                  <div style="width: {{d.capSize}}px; height: {{d.capSize}}px; border-radius: 50%; position: relative; background: radial-gradient(circle at 38% 28%, #414243 0%, #151617 60%, #090909 100%); box-shadow: inset 0 1px 1px rgba(255,255,255,0.3), inset 0 -3px 5px rgba(0,0,0,0.75)">
+                    <div style="position: absolute; left: 0; top: 0; width: {{d.capSize}}px; height: {{d.capSize}}px; transform: rotate({{d.gRot}}deg)">
+                      <div style="position: absolute; left: {{d.gPtrLeft}}px; top: 3px; width: 3px; height: {{d.gPtrH}}px; border-radius: 2px; background: {{d.gPtr}}; box-shadow: {{d.gPtrGlow}}"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div style="position: absolute; left: 0; top: 0; width: {{d.f}}px; height: {{d.f}}px; border-radius: 50%; background: radial-gradient(circle at 50% 50%, transparent 62%, rgba(0,0,0,0.38) 86%, rgba(0,0,0,0.62) 100%)"></div>
+            </div>
+          </div>
+        </sc-for>
+      </sc-for>
+      <svg width="1276" height="338" viewBox="0 0 1276 338" aria-hidden="true" style="position: absolute; left: 0; top: 0; z-index: 0">
+        <path d="{{win.stems}}" fill="none" stroke="rgba(200,205,210,0.32)" stroke-width="1.2"/>
+        <path d="{{win.hotStems}}" fill="none" stroke="#FF3B3F" stroke-width="1.4" style="filter: drop-shadow(0 0 4px rgba(255,59,63,0.85))"/>
+      </svg>
+      <div style="position: absolute; left: {{win.left}}px; top: {{win.top}}px; width: {{win.w}}px; height: {{win.h}}px; box-sizing: border-box; border-radius: 16px; padding: 4px; border: 1px solid rgba(183,194,205,0.22); background: linear-gradient(180deg, rgba(183,194,205,0.10) 0%, rgba(0,0,0,0.3) 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 10px 20px rgba(0,0,0,0.55)">
+        <div style="position: relative; width: {{win.iw}}px; height: {{win.ih}}px; border-radius: 12px; overflow: hidden; background: linear-gradient(180deg, #0E1012 0%, #171B1F 100%); box-shadow: inset 0 3px 10px rgba(0,0,0,0.95), inset 0 0 0 1px rgba(92,225,255,0.18)">
+          <div style="position: absolute; left: {{win.active.x}}px; top: 3px; width: {{win.active.w}}px; height: 60px; box-sizing: border-box; border-radius: 10px; border: 1px solid {{win.active.border}}; background: {{win.active.bg}}; box-shadow: 0 0 14px {{win.active.halo}}"></div>
+          <svg width="{{win.iw}}" height="{{win.ih}}" viewBox="{{win.vb}}" role="img" aria-label="Q display: each band shows its shape and Q; the active band shows its full curve and handles" style="position: absolute; left: 0; top: 0">
+            <path d="{{win.icons}}" fill="none" stroke="rgba(191,244,255,0.75)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="{{win.hotIcons}}" fill="none" stroke="#FF8A8C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="{{win.active.fill}}" fill="{{win.active.fillColor}}"/>
+            <path d="{{win.active.curve}}" fill="none" stroke="{{win.active.color}}" stroke-width="2" style="filter: drop-shadow(0 0 3px {{win.active.glow}})"/>
+            <path d="{{win.active.bar}}" fill="none" stroke="{{win.active.handle}}" stroke-width="1" stroke-dasharray="3 3" opacity="0.8"/>
+          </svg>
+          <sc-for list="{{win.zones}}" as="z" hint-placeholder-count="7">
+            <div data-ctl="peq_b{{z.n}}_q" data-band="{{z.i}}" data-axis="y" class="ctl" title="{{z.name}} Q (drag up/down, double-click to reset)" style="position: absolute; left: {{z.x}}px; top: 0; width: {{z.w}}px; height: {{win.ih}}px; z-index: 1"></div>
+          </sc-for>
+          <sc-for list="{{win.active.handles}}" as="h" hint-placeholder-count="2">
+            <div style="position: absolute; left: {{h.x}}px; top: {{h.y}}px; width: 10px; height: 10px; transform: translate(-50%, -50%); border-radius: 50%; box-sizing: border-box; border: 1.5px solid {{win.active.handle}}; background: #07080A; box-shadow: 0 0 6px {{win.active.glow}}"></div>
+          </sc-for>
+          <sc-for list="{{win.labels}}" as="z" hint-placeholder-count="6">
+            <span style="position: absolute; left: {{z.x}}px; top: 22px; font-weight: 700; font-size: 15px; line-height: 1; font-variant-numeric: tabular-nums; color: {{z.color}}">{{z.q}}</span>
+            <span style="position: absolute; left: {{z.x}}px; top: 41px; font-weight: 500; font-size: 11px; line-height: 1; letter-spacing: 0.1em; color: #8F9294">Q</span>
+          </sc-for>
+          <span style="position: absolute; left: {{win.active.textX}}px; top: 8px; font-weight: 700; font-size: 12px; line-height: 1; color: {{win.active.text}}">Q {{win.active.q}}</span>
+          <span style="position: absolute; left: {{win.active.chipX}}px; top: 45px; transform: translateX(-100%); height: 15px; box-sizing: border-box; padding: 0 6px; border-radius: 8px; border: 1px solid {{win.active.border}}; background: rgba(7,8,10,0.85); display: flex; align-items: center; gap: 4px; font-weight: 600; font-size: 11px; line-height: 1; color: {{win.active.text}}; white-space: nowrap; cursor: pointer; z-index: 2" data-cycle="peq_b{{win.active.n}}_shape" title="Band shape (click to change)">{{win.active.shape}} &#x25BE;</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="position: absolute; left: 44px; top: 586px; width: 206px; height: 24px; display: flex; flex-direction: column; justify-content: center; gap: 3px">
+      <span style="font-stretch: 125%; font-weight: 600; font-size: 11px; line-height: 1; letter-spacing: 0.22em; color: #C9D2DB; text-shadow: 0 -1px 0 rgba(18,24,30,0.9), 0 1px 0 rgba(225,232,240,0.28)">MASTERING EQ</span>
+    </div>
+    <div style="position: absolute; left: 260px; top: 576px; width: 816px; height: 44px; display: flex; align-items: center; gap: 24px">
+      <div style="flex-grow: 1; height: 26px; border-radius: 13px; background: repeating-linear-gradient(90deg, #0A0A0B 0px, #0A0A0B 5px, #2E3031 5px, #2E3031 7px); box-shadow: inset 0 2px 4px rgba(0,0,0,0.9), 0 1px 0 rgba(255,255,255,0.25)"></div>
+      <div style="height: 42px; box-sizing: border-box; padding: 2px; border-radius: 21px; background: linear-gradient(135deg, #FFFFFF 0%, #C9CDD2 22%, #6E737A 48%, #E6E8EB 70%, #8E939A 100%); box-shadow: 0 8px 12px rgba(0,0,0,0.75), 0 3px 4px rgba(0,0,0,0.6)">
+        <div style="position: relative; height: 38px; box-sizing: border-box; padding: 0 24px; border-radius: 19px; overflow: hidden; background: radial-gradient(ellipse 80% 120% at 30% 0%, #282F36 0%, #111519 55%, #07080A 100%); box-shadow: inset 0 2px 4px rgba(0,0,0,0.9), inset 0 0 0 1px rgba(0,0,0,0.6); display: flex; align-items: center; gap: 16px">
+          <span style="font-family: Michroma, sans-serif; font-size: 24px; line-height: 1; letter-spacing: 0.06em; background: linear-gradient(180deg, #FFFFFF 0%, #E4E7EA 36%, #8E939A 52%, #F2F4F6 100%); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 1.5px 0 rgba(0,0,0,0.9))">JG</span>
+          <span style="width: 1px; height: 22px; background: linear-gradient(180deg, transparent, rgba(255,255,255,0.75), transparent)"></span>
+          <span style="font-stretch: 125%; font-weight: 600; font-size: 13px; letter-spacing: 0.6em; margin-right: -0.6em; background: linear-gradient(180deg, #FFFFFF 0%, #DADDE2 45%, #9AA0A6 60%, #EEF0F2 100%); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 1px 0 rgba(0,0,0,0.9))">DESIGNS</span>
+          <div style="position: absolute; left: 0; top: 0; right: 0; height: 17px; border-radius: 19px 19px 40% 40%; background: linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.03) 100%)"></div>
+        </div>
+      </div>
+      <div style="flex-grow: 1; height: 26px; border-radius: 13px; background: repeating-linear-gradient(90deg, #0A0A0B 0px, #0A0A0B 5px, #2E3031 5px, #2E3031 7px); box-shadow: inset 0 2px 4px rgba(0,0,0,0.9), 0 1px 0 rgba(255,255,255,0.25)"></div>
+    </div>
+    <div style="position: absolute; left: 1150px; top: 584px; width: 132px; height: 28px; box-sizing: border-box; border-radius: 7px; padding: 0 12px; background: repeating-linear-gradient(90deg, rgba(255,255,255,0.07) 0px, rgba(255,255,255,0.07) 1px, rgba(0,0,0,0.06) 1px, rgba(0,0,0,0.06) 2px), linear-gradient(180deg, #E9EBEE 0%, #B4B9BF 45%, #8E939A 70%, #C9CDD2 100%); box-shadow: 0 6px 8px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.8), inset 0 -1px 0 rgba(0,0,0,0.35); display: flex; align-items: center; justify-content: space-between">
+      <span style="width: 5px; height: 5px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #FFFFFF 0%, #8E939A 60%, #4A4E53 100%); box-shadow: inset 0 0 0 0.5px rgba(0,0,0,0.6)"></span>
+      <span style="font-family: Michroma, sans-serif; font-size: 11px; line-height: 1; letter-spacing: 0.12em; color: #3A3D42; text-shadow: 0 1px 0 rgba(255,255,255,0.7), 0 -1px 0 rgba(0,0,0,0.25)">N&#xBA; 0001</span>
+      <span style="width: 5px; height: 5px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #FFFFFF 0%, #8E939A 60%, #4A4E53 100%); box-shadow: inset 0 0 0 0.5px rgba(0,0,0,0.6)"></span>
+    </div>
+    <sc-for list="{{screws}}" as="sw" hint-placeholder-count="6">
+      <div style="position: absolute; left: {{sw.x}}px; top: {{sw.y}}px; width: 13px; height: 13px; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(circle at 50% 70%, rgba(255,255,255,0.22) 0%, transparent 60%), #181D22; box-shadow: inset 0 1.5px 2px rgba(0,0,0,0.85), 0 1px 0 rgba(225,232,240,0.25)">
+        <div style="position: absolute; left: 1.5px; top: 1.5px; width: 10px; height: 10px; border-radius: 50%; background: radial-gradient(circle at 50% 30%, #FFFFFF 0%, #D6DADE 22%, #8E939A 58%, #4A4E53 100%); box-shadow: 0 2px 2px rgba(0,0,0,0.7), inset 0 -0.5px 1px rgba(0,0,0,0.5)">
+          <div style="position: absolute; left: 0; top: 0; width: 10px; height: 10px; transform: rotate({{sw.r}}deg)">
+            <div style="position: absolute; left: 1.5px; top: 4.2px; width: 7px; height: 1.6px; border-radius: 1px; background: #1A1B1E; box-shadow: 0 0.6px 0 rgba(255,255,255,0.55)"></div>
+          </div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</div>
+</template>
+</body>
+</html>

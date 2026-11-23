@@ -1,0 +1,10 @@
+build/
+build-*/
+cmake-build-*/
+.DS_Store
+*.xcodeproj/
+.idea/
+.vscode/
+# The Avid AAX SDK is confidential. It lives outside the repo or in an ignored folder.
+SDKs/
+aax-sdk/
